@@ -61,32 +61,6 @@ class RegisterViewController: UIViewController {
                 performSegue(withIdentifier: "showNextScreen", sender: self)
     }
     
-//    @IBAction func registerButtonTapped(_ sender: Any) {
-//        guard let firstName = user.firstName, !firstName.isEmpty,
-//              let lastName = user.lastName, !lastName.isEmpty,
-//              let phoneNumber = user.phoneNumber, !phoneNumber.isEmpty,
-//              let birthDay = user.birthDay, !birthDay.isEmpty,
-//              let password = user.password, !password.isEmpty,
-//              let passwordVerification = user.passwordVerification, !passwordVerification.isEmpty else {
-//            showAlert(message: "Please fill in all fields.")
-//            return
-//        }
-//        
-//        guard password == passwordVerification else {
-//            showAlert(message: "Passwords do not match.")
-//            return
-//        }
-//        
-//        user.id = UUID().uuidString
-//        print(user)
-//        
-//        performSegue(withIdentifier: "showNextScreen", sender: self)
-//    }
-//    
-    
-    
-    
-    
     
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)

@@ -11,4 +11,7 @@ struct RecipeModel{
     let imageSrc:String
     let mealName: String
     let ingredients:String
+    let id: String
+    let measuredIngredients: String
+    let instructions: String
 }

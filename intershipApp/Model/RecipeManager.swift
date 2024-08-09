@@ -45,11 +45,28 @@ struct RecipeManager{
             let decodedData = try decoder.decode(RecipeData.self, from: data)
             print(decodedData.meals[0].strMeal)
             let receivedMeal = decodedData.meals[0]
+            let idMeel = receivedMeal.idMeal
             let name = receivedMeal.strMeal
+            let instructionsStr = receivedMeal.strInstructions
             let ingredients = [receivedMeal.strIngredient1, receivedMeal.strIngredient2,receivedMeal.strIngredient3,receivedMeal.strIngredient4,receivedMeal.strIngredient5,receivedMeal.strIngredient6,receivedMeal.strIngredient7,receivedMeal.strIngredient8,receivedMeal.strIngredient9,receivedMeal.strIngredient10,receivedMeal.strIngredient11,receivedMeal.strIngredient12,receivedMeal.strIngredient13,receivedMeal.strIngredient14,receivedMeal.strIngredient15,receivedMeal.strIngredient16,receivedMeal.strIngredient17,receivedMeal.strIngredient18,receivedMeal.strIngredient19,receivedMeal.strIngredient20]
             let ingredientsString = ingredients.compactMap { $0 }.filter { !$0.isEmpty }.joined(separator: ", ")
+            let measures = [receivedMeal.strMeasure1,receivedMeal.strMeasure2,receivedMeal.strMeasure3,receivedMeal.strMeasure4,receivedMeal.strMeasure5,receivedMeal.strMeasure6,receivedMeal.strMeasure7,receivedMeal.strMeasure8,receivedMeal.strMeasure9,receivedMeal.strMeasure10,receivedMeal.strMeasure11,receivedMeal.strMeasure12,receivedMeal.strMeasure13,receivedMeal.strMeasure14,receivedMeal.strMeasure15,receivedMeal.strMeasure16,receivedMeal.strMeasure17,receivedMeal.strMeasure18,receivedMeal.strMeasure19,receivedMeal.strMeasure20]
+            
+            var measuredIngredientsStr = ""
+                   for (index, ingredient) in ingredients.enumerated() {
+                       if let ingredient = ingredient, !ingredient.isEmpty {
+                           let measure = measures[index] ?? ""
+                           if !measure.isEmpty {
+                               measuredIngredientsStr += "\(ingredient):  \(measure)\n"
+                           } else {
+                               measuredIngredientsStr += "\(ingredient)\n"
+                           }
+                       }
+                   }
+            
+            
             let imageSrc = decodedData.meals[0].strMealThumb
-            let recipe = RecipeModel(imageSrc: imageSrc, mealName: name, ingredients: ingredientsString)
+            let recipe = RecipeModel(imageSrc: imageSrc, mealName: name, ingredients: ingredientsString, id: idMeel, measuredIngredients: measuredIngredientsStr, instructions: instructionsStr)
             return recipe
         } catch{
             delegate?.didFailWithError(error: error)

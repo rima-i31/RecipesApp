@@ -49,6 +49,11 @@ class HomeScreenViewController: UIViewController {
 }
 //MARK: - UITableViewDelegate
 extension HomeScreenViewController: UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            performSegue(withIdentifier: "showRecipeDetail", sender: self)
+        }
+    
 }
 //MARK: - UITableViewDataSource
 extension HomeScreenViewController: UITableViewDataSource{
@@ -61,9 +66,11 @@ extension HomeScreenViewController: UITableViewDataSource{
             return UITableViewCell()
         }
         let recipe = recipes[indexPath.row]
-        cell.meelName.text = recipe.mealName
-        cell.ingredients.text = recipe.ingredients
         
+        cell.recipe = recipe
+//        cell.meelName.text = recipe.mealName
+//        cell.ingredients.text = recipe.ingredients
+//
         //           cell.meelImage.image = UIImage(data: try! Data(contentsOf: URL(string: recipe.imageSrc)!))
         if let imageUrl = URL(string: recipe.imageSrc) {
             URLSession.shared.dataTask(with: imageUrl) { data, response, error in
@@ -99,4 +106,18 @@ extension HomeScreenViewController: RecipeManagerDelegate{
         }
     }
     
+}
+//MARK: - Navigation
+extension HomeScreenViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showRecipeDetail" {
+            if let destinationVC = segue.destination as? DetailViewController, let indexPath = homeTableView.indexPathForSelectedRow {
+                let selectedRecipe = recipes[indexPath.row]
+                destinationVC.imageSrc = selectedRecipe.imageSrc
+                destinationVC.mealName = selectedRecipe.mealName
+                destinationVC.measuredIngredients = selectedRecipe.measuredIngredients
+                destinationVC.instructions = selectedRecipe.instructions
+            }
+        }
+    }
 }

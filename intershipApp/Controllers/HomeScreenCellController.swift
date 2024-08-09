@@ -16,6 +16,12 @@ class HomeScreenCellController: UITableViewCell {
     
     @IBOutlet weak var ingredients: UILabel!
     
-    
+    var recipe:RecipeModel? {
+        didSet {
+            guard let data = self.recipe else {return}
+            self.meelName.text = data.mealName
+            self.ingredients.text = data.ingredients
+        }
+    }
     
 }
