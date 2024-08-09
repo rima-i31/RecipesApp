@@ -21,6 +21,15 @@ class HomeScreenCellController: UITableViewCell {
             guard let data = self.recipe else {return}
             self.meelName.text = data.mealName
             self.ingredients.text = data.ingredients
+            if let imageUrl = URL(string: data.imageSrc) {
+                URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                    if let safeData = data, error == nil {
+                        DispatchQueue.main.async {
+                            self.meelImage.image = UIImage(data: safeData)
+                        }
+                    }
+                }.resume()
+            }
         }
     }
     

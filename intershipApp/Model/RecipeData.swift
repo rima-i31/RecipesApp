@@ -8,10 +8,10 @@
 import Foundation
 
 struct RecipeData: Codable{
-    let meals: [meel]
+    let meals: [meal]
 }
 
-struct meel:Codable{
+struct meal:Codable{
     let strMeal:String
     let idMeal: String
     let strMealThumb:String

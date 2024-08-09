@@ -13,8 +13,11 @@ protocol RecipeManagerDelegate{
 
 
 struct RecipeManager{
+    var k = K()
     var delegate:RecipeManagerDelegate?
-    let mainURL = "https://www.themealdb.com/api/json/v1/1/random.php"
+    var mainURL: String {
+            return k.getRecipeUrl
+        }
     func getRecipes(){
         let urlString = mainURL
         performRequest(with:urlString)
