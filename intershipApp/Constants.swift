@@ -10,4 +10,7 @@ import Foundation
 struct K{
     let getRecipeUrl = "https://www.themealdb.com/api/json/v1/1/random.php"
     let recipesCount = 50
+    let indexSet = IndexSet(integer: 0)
+    let idCell = "HomeScreenCell"
+    let idErrorCell = "NoRecipeCell"
 }

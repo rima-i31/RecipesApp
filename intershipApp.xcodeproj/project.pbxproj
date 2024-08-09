@@ -13,6 +13,8 @@
 		542365C12C63BFE800EB952E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542365C02C63BFE800EB952E /* DetailViewController.swift */; };
 		548E9A672C665ACF00B414D3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548E9A662C665ACF00B414D3 /* Constants.swift */; };
 		548E9A692C665E3700B414D3 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548E9A682C665E3700B414D3 /* SearchManager.swift */; };
+		548E9A6B2C6687D100B414D3 /* NoRecipeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548E9A6A2C6687D100B414D3 /* NoRecipeCell.xib */; };
+		548E9A6D2C668B2300B414D3 /* NoRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548E9A6C2C668B2200B414D3 /* NoRecipeTableViewCell.swift */; };
 		549601292C638F70000EFE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 549601282C638F70000EFE06 /* Assets.xcassets */; };
 		54EE1BDC2C637FF7005EBB00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54EE1BDA2C637FF7005EBB00 /* Main.storyboard */; };
 		54FBDFE42C63852900C0C76C /* RegistrationViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FBDFE32C63852900C0C76C /* RegistrationViewCell.xib */; };
@@ -38,6 +40,8 @@
 		542365C02C63BFE800EB952E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		548E9A662C665ACF00B414D3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		548E9A682C665E3700B414D3 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		548E9A6A2C6687D100B414D3 /* NoRecipeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoRecipeCell.xib; sourceTree = "<group>"; };
+		548E9A6C2C668B2200B414D3 /* NoRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRecipeTableViewCell.swift; sourceTree = "<group>"; };
 		549601282C638F70000EFE06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54EE1BDB2C637FF7005EBB00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		54FBDFE32C63852900C0C76C /* RegistrationViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationViewCell.xib; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 				54FBDFE52C63853700C0C76C /* HomeScreenCell.xib */,
 				54EE1BDA2C637FF7005EBB00 /* Main.storyboard */,
 				5411A97F2C5E1E4B00AB3695 /* LaunchScreen.storyboard */,
+				548E9A6A2C6687D100B414D3 /* NoRecipeCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 				54FBDFE72C6387A700C0C76C /* HomeScreenCellController.swift */,
 				54FBDFE82C6387A700C0C76C /* HomeScreenViewController.swift */,
 				542365C02C63BFE800EB952E /* DetailViewController.swift */,
+				548E9A6C2C668B2200B414D3 /* NoRecipeTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -201,6 +207,7 @@
 			files = (
 				54FBDFE42C63852900C0C76C /* RegistrationViewCell.xib in Resources */,
 				54EE1BDC2C637FF7005EBB00 /* Main.storyboard in Resources */,
+				548E9A6B2C6687D100B414D3 /* NoRecipeCell.xib in Resources */,
 				54FBDFE62C63853700C0C76C /* HomeScreenCell.xib in Resources */,
 				5411A9812C5E1E4B00AB3695 /* Base in Resources */,
 				549601292C638F70000EFE06 /* Assets.xcassets in Resources */,
@@ -228,6 +235,7 @@
 				548E9A672C665ACF00B414D3 /* Constants.swift in Sources */,
 				548E9A692C665E3700B414D3 /* SearchManager.swift in Sources */,
 				54FBE0002C63886800C0C76C /* RecipeModel.swift in Sources */,
+				548E9A6D2C668B2300B414D3 /* NoRecipeTableViewCell.swift in Sources */,
 				54FBE0042C63887400C0C76C /* CellData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

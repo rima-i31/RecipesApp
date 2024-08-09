@@ -9,6 +9,9 @@ import UIKit
 
 class NoRecipeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var notFoundLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
