@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,22 +12,22 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeScreenCell" rowHeight="118" id="5ru-4x-qMq" customClass="HomeScreenCellController" customModule="intershipApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="393" height="118"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5ru-4x-qMq" id="qkP-tG-rSd">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5ru-4x-qMq" id="qkP-tG-rSd">
                 <rect key="frame" x="0.0" y="0.0" width="393" height="118"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mwF-Ar-rYh" userLabel="HStack">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="120"/>
+                        <rect key="frame" x="0.0" y="10" width="393" height="108"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QvT-1G-EH5">
-                                <rect key="frame" x="0.0" y="10" width="100" height="100"/>
+                                <rect key="frame" x="0.0" y="4" width="100" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="VN4-qY-J9d"/>
-                                    <constraint firstAttribute="width" constant="100" id="fix-5B-DtE"/>
+                                    <constraint firstAttribute="height" constant="100" id="fk4-Yk-jS3"/>
+                                    <constraint firstAttribute="width" constant="100" id="xr9-FY-eAk"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nhF-85-yLQ">
-                                <rect key="frame" x="120" y="36.333333333333329" width="273" height="47.333333333333329"/>
+                                <rect key="frame" x="120" y="30.333333333333332" width="273" height="47.333333333333343"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pasta" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkH-4E-lTF">
                                         <rect key="frame" x="0.0" y="0.0" width="50.666666666666664" height="25.333333333333332"/>
@@ -43,15 +44,12 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="120" id="DS1-mO-7Eh"/>
-                        </constraints>
                     </stackView>
                 </subviews>
-                <color key="backgroundColor" red="0.23956373449999999" green="0.28665656639999998" blue="0.39642840140000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                <color key="backgroundColor" name="darkBC"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="mwF-Ar-rYh" secondAttribute="bottom" id="5DJ-kw-Blo"/>
-                    <constraint firstItem="mwF-Ar-rYh" firstAttribute="top" secondItem="qkP-tG-rSd" secondAttribute="top" id="7xH-Hy-LNF"/>
+                    <constraint firstItem="mwF-Ar-rYh" firstAttribute="top" secondItem="qkP-tG-rSd" secondAttribute="top" constant="10" id="DU3-pa-vAq"/>
                     <constraint firstItem="mwF-Ar-rYh" firstAttribute="leading" secondItem="qkP-tG-rSd" secondAttribute="leading" id="Qah-Za-N6d"/>
                     <constraint firstAttribute="trailing" secondItem="mwF-Ar-rYh" secondAttribute="trailing" id="huM-8n-cox"/>
                 </constraints>
@@ -64,4 +62,9 @@
             <point key="canvasLocation" x="103" y="-120"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="darkBC">
+            <color red="0.23999999463558197" green="0.28700000047683716" blue="0.39599999785423279" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
 </document>

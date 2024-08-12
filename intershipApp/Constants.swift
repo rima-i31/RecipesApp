@@ -13,4 +13,7 @@ struct K{
     let indexSet = IndexSet(integer: 0)
     let idCell = "HomeScreenCell"
     let idErrorCell = "NoRecipeCell"
+    let segueToDetails = "showRecipeDetail"
+    let idRegistrationCell = "RegistrationViewCell"
+    let segueToHome = "showHomeScreen"
 }

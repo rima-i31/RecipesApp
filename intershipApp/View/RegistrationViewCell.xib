@@ -22,21 +22,21 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dw0-lB-Isg">
                                 <rect key="frame" x="0.0" y="0.0" width="333" height="20.333333333333332"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="myWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RbK-jA-I4G">
                                 <rect key="frame" x="0.0" y="49" width="333" height="34"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" name="black"/>
-                                <color key="textColor" name="black"/>
+                                <color key="backgroundColor" name="myWhite"/>
+                                <color key="tintColor" name="myBlack"/>
+                                <color key="textColor" name="myBlack"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                         </subviews>
                     </stackView>
                 </subviews>
-                <color key="backgroundColor" red="0.23956373449999999" green="0.28665656639999998" blue="0.39642840140000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                <color key="backgroundColor" name="lightBC"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="gdX-BA-TzN" secondAttribute="trailing" constant="30" id="9PI-vn-d7x"/>
                     <constraint firstAttribute="bottom" secondItem="gdX-BA-TzN" secondAttribute="bottom" constant="10" id="VMF-0h-egc"/>
@@ -52,8 +52,14 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="black">
+        <namedColor name="lightBC">
+            <color red="0.37254902719999999" green="0.44313728810000003" blue="0.61176472900000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="myBlack">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="myWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

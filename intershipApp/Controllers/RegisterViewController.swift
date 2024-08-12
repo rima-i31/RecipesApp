@@ -21,7 +21,7 @@ class RegisterViewController: UIViewController {
     let passswordVerificationCell = CellData(cellName: "Repeat password")
     var cellsArray:[CellData] = []
     var user = UserData()
-    
+    var k = K()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +29,7 @@ class RegisterViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "RegistrationViewCell", bundle: nil), forCellReuseIdentifier: "RegistrationViewCell")
+        tableView.register(UINib(nibName: k.idRegistrationCell, bundle: nil), forCellReuseIdentifier: k.idRegistrationCell)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
@@ -58,7 +58,7 @@ class RegisterViewController: UIViewController {
                 user.id = UUID().uuidString
                 print(user)
         
-                performSegue(withIdentifier: "showNextScreen", sender: self)
+        performSegue(withIdentifier: k.segueToHome, sender: self)
     }
     
     
@@ -143,7 +143,7 @@ extension RegisterViewController: UITableViewDataSource{
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "RegistrationViewCell", for: indexPath) as? RegistrationViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: k.idRegistrationCell, for: indexPath) as? RegistrationViewCell else {
                 return UITableViewCell()
             }
             cell.cellLabel.text = cellsArray[indexPath.row].cellName
@@ -151,10 +151,6 @@ extension RegisterViewController: UITableViewDataSource{
             cell.textField.delegate = self
             
             switch indexPath.row {
-//            case 2:
-//                cell.textField.keyboardType = .phonePad
-//            case 3:
-//                cell.textField.keyboardType = .numberPad
             case 4, 5:
                 cell.textField.isSecureTextEntry = true
                 cell.textField.textContentType = .oneTimeCode
