@@ -33,6 +33,7 @@ struct RecipeManager{
                 }
                 if let safeData = data{
                     if let recipe =  parseJSON(safeData){
+                        
                         delegate?.didUpdateRecipe(newRecipe: recipe)
                     }
                     

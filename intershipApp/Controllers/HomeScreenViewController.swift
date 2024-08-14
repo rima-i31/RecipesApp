@@ -15,6 +15,9 @@ class HomeScreenViewController: UIViewController {
     
     @IBOutlet weak var searchTextField: UITextField!
     
+    
+
+    
     var loadingIndicator = UIActivityIndicatorView(style: .large)
     
     var k = K()
@@ -28,7 +31,8 @@ class HomeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let i = UIScreen.main.nativeScale
+        print(i)
         self.navigationItem.title = "Recipes"
         
         self.navigationItem.hidesBackButton = true
@@ -51,6 +55,7 @@ class HomeScreenViewController: UIViewController {
     func loadRandomRecipes() {
         for _ in 1...k.recipesCount {
             recipeManager.getRecipes()
+            
         }
     }
     func setupLoadingIndicator() {
@@ -59,12 +64,20 @@ class HomeScreenViewController: UIViewController {
         loadingIndicator.hidesWhenStopped = true
         view.addSubview(loadingIndicator)
     }
-   
     
-    @IBAction func searchButtonTapped(_ sender: Any) {
+
+    @IBAction func searchButtonTapped(_ sender: UIButton){
         view.endEditing(true)
     }
     
+    deinit {
+        ImageCache.shared.clearCache()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        ImageCache.shared.clearCache()
+    }
 }
 //MARK: - UITableViewDelegate
 extension HomeScreenViewController: UITableViewDelegate{
@@ -79,7 +92,6 @@ extension HomeScreenViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let foundCellsCount = foundRecipes.isEmpty ? 1 : foundRecipes.count
         return isOnSearch ? foundCellsCount : recipes.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,6 +107,7 @@ extension HomeScreenViewController: UITableViewDataSource{
         }else{
             return  UITableViewCell()
         }
+           
         
     }
     
@@ -104,7 +117,18 @@ extension HomeScreenViewController: UITableViewDataSource{
 extension HomeScreenViewController: RecipeManagerDelegate{
     func didUpdateRecipe(newRecipe: RecipeModel) {
         DispatchQueue.main.async {
-            self.recipes.append(newRecipe)
+            var isNew = true
+            for i in 0..<self.recipes.count{
+                if newRecipe.id == self.recipes[i].id{
+                    isNew = false
+                }
+            }
+            if isNew{
+                self.recipes.append(newRecipe)
+            }else{
+                self.recipeManager.getRecipes()
+            }
+            
             if self.recipes.count == self.k.recipesCount {
                 self.loadingIndicator.stopAnimating()
                 self.homeTableView.reloadSections(self.k.indexSet, with: .fade)
@@ -131,7 +155,6 @@ extension HomeScreenViewController {
                 } else {
                     selectedRecipe = recipes[indexPath.row]
                 }
-                
                 toDetails.trnsferData(from: selectedRecipe, to: destinationVC)
             }
         }
@@ -141,18 +164,15 @@ extension HomeScreenViewController {
 extension HomeScreenViewController:UITextFieldDelegate{
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(reload), object: nil)
-        
         if let searchText = searchTextField.text, !searchText.isEmpty {
             isOnSearch = true
             self.perform(#selector(reload), with: nil, afterDelay: 0.7)
-        } else {
+        } else{
             isOnSearch = false
             foundRecipes.removeAll()
             homeTableView.reloadSections(k.indexSet, with: .fade)
         }
-        
     }
     @objc func reload() {
         guard let name = searchTextField.text else { return }

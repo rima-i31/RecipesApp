@@ -45,6 +45,11 @@
                             </stackView>
                         </subviews>
                     </stackView>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" id="uhL-xn-abp">
+                        <rect key="frame" x="40" y="55" width="17" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="color" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </activityIndicatorView>
                 </subviews>
                 <color key="backgroundColor" name="darkBC"/>
                 <constraints>
@@ -55,11 +60,12 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="indicator" destination="uhL-xn-abp" id="FHe-sb-tai"/>
                 <outlet property="ingredients" destination="SzR-f8-c3U" id="bfv-6N-1hz"/>
                 <outlet property="meelImage" destination="QvT-1G-EH5" id="gI0-fH-cez"/>
                 <outlet property="meelName" destination="HkH-4E-lTF" id="3Mm-GS-y0Y"/>
             </connections>
-            <point key="canvasLocation" x="103" y="-120"/>
+            <point key="canvasLocation" x="101.5267175572519" y="-120.42253521126761"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -75,7 +75,7 @@ extension RegisterViewController: UITableViewDelegate{
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         let index = textField.tag
-        //cellsArray[index].text = textField.text
+
         switch index{
         case 0: user.firstName = textField.text
         case 1: user.lastName = textField.text

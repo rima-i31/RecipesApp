@@ -31,7 +31,6 @@ class DetailViewController: UIViewController {
                        }
                    }.resume()
                }
-               //mealNameLabel.text = mealName
                ingredientsLabel.text = measuredIngredients
                instructionsLabel.text = instructions
                 self.navigationItem.title = mealName

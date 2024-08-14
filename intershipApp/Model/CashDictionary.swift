@@ -12,7 +12,6 @@ class ImageCache {
     static let shared = ImageCache()
     
     private var cache = [String: UIImage]()
-    
     private init() {}
     
     func getImage(forKey key: String) -> UIImage? {
@@ -46,19 +45,14 @@ class ImageCache {
         
         return newImage!
     }
-    
-    private func getTargetSize() -> CGSize {
-        let screenHeight = UIScreen.main.bounds.height
-        
-        switch screenHeight {
-        case 0..<667:
-            return CGSize(width: 100, height: 100)
-        case 667..<896:
-            return CGSize(width: 120, height: 120)
-        default: 
-            return CGSize(width: 150, height: 150)
-        }
+    func clearCache() {
+        cache.removeAll()
     }
+    private func getTargetSize() -> CGSize {
+        let screenHeight = UIScreen.main.nativeScale
+        return CGSize(width: 100 * screenHeight, height: 100 * screenHeight)
+    }
+    
 }
 
 
