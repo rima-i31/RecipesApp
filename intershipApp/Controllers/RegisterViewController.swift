@@ -24,7 +24,9 @@ class RegisterViewController: UIViewController {
     var k = K()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let loadedUser = UserData.loadFromDefaults() {
+                user = loadedUser
+            }
         cellsArray = [nameCell, lastNameCell, phoneCell, birthdayCell, passwordCell, passswordVerificationCell]
         
         tableView.delegate = self
@@ -56,6 +58,7 @@ class RegisterViewController: UIViewController {
                 }
         
                 user.id = UUID().uuidString
+                user.saveToDefaults()
                 print(user)
         
         performSegue(withIdentifier: k.segueToHome, sender: self)

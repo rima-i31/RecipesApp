@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeModel{
+struct RecipeModel: Codable{
     let imageSrc:String
     let mealName: String
     let ingredients:String

@@ -10,6 +10,9 @@
 		5411A9752C5E1E4900AB3695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411A9742C5E1E4900AB3695 /* AppDelegate.swift */; };
 		5411A9772C5E1E4900AB3695 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411A9762C5E1E4900AB3695 /* SceneDelegate.swift */; };
 		5411A9812C5E1E4B00AB3695 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 5411A9802C5E1E4B00AB3695 /* Base */; };
+		54173F962C7352CC001038E3 /* AddRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54173F952C7352CC001038E3 /* AddRecipeViewController.swift */; };
+		54173F982C738576001038E3 /* AddRecipeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54173F972C738576001038E3 /* AddRecipeCell.xib */; };
+		54173F9A2C73874B001038E3 /* AddCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54173F992C73874B001038E3 /* AddCellTableViewCell.swift */; };
 		542365C12C63BFE800EB952E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542365C02C63BFE800EB952E /* DetailViewController.swift */; };
 		5434362C2C677A160012B15B /* ToDetailsSegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5434362B2C677A160012B15B /* ToDetailsSegueManager.swift */; };
 		548E9A672C665ACF00B414D3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548E9A662C665ACF00B414D3 /* Constants.swift */; };
@@ -39,6 +42,9 @@
 		5411A9762C5E1E4900AB3695 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5411A9802C5E1E4B00AB3695 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5411A9822C5E1E4B00AB3695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54173F952C7352CC001038E3 /* AddRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeViewController.swift; sourceTree = "<group>"; };
+		54173F972C738576001038E3 /* AddRecipeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRecipeCell.xib; sourceTree = "<group>"; };
+		54173F992C73874B001038E3 /* AddCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCellTableViewCell.swift; sourceTree = "<group>"; };
 		542365C02C63BFE800EB952E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5434362B2C677A160012B15B /* ToDetailsSegueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDetailsSegueManager.swift; sourceTree = "<group>"; };
 		548E9A662C665ACF00B414D3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -135,6 +141,7 @@
 				54EE1BDA2C637FF7005EBB00 /* Main.storyboard */,
 				5411A97F2C5E1E4B00AB3695 /* LaunchScreen.storyboard */,
 				548E9A6A2C6687D100B414D3 /* NoRecipeCell.xib */,
+				54173F972C738576001038E3 /* AddRecipeCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -149,6 +156,8 @@
 				54FBDFE82C6387A700C0C76C /* HomeScreenViewController.swift */,
 				542365C02C63BFE800EB952E /* DetailViewController.swift */,
 				548E9A6C2C668B2200B414D3 /* NoRecipeTableViewCell.swift */,
+				54173F952C7352CC001038E3 /* AddRecipeViewController.swift */,
+				54173F992C73874B001038E3 /* AddCellTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -217,6 +226,7 @@
 				54FBDFE62C63853700C0C76C /* HomeScreenCell.xib in Resources */,
 				5411A9812C5E1E4B00AB3695 /* Base in Resources */,
 				549601292C638F70000EFE06 /* Assets.xcassets in Resources */,
+				54173F982C738576001038E3 /* AddRecipeCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,9 +242,11 @@
 				54FBDFFF2C63886800C0C76C /* RecipeManager.swift in Sources */,
 				54FBDFEE2C6387B100C0C76C /* RegisterViewController.swift in Sources */,
 				54FBDFEA2C6387A700C0C76C /* HomeScreenViewController.swift in Sources */,
+				54173F962C7352CC001038E3 /* AddRecipeViewController.swift in Sources */,
 				5411A9772C5E1E4900AB3695 /* SceneDelegate.swift in Sources */,
 				54FBE0022C63886800C0C76C /* UserData.swift in Sources */,
 				54FBDFF02C6387B100C0C76C /* ViewController.swift in Sources */,
+				54173F9A2C73874B001038E3 /* AddCellTableViewCell.swift in Sources */,
 				54FBDFE92C6387A700C0C76C /* HomeScreenCellController.swift in Sources */,
 				54FBE0012C63886800C0C76C /* RecipeData.swift in Sources */,
 				54FBDFEF2C6387B100C0C76C /* RegistrationViewCell.swift in Sources */,

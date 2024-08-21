@@ -327,11 +327,51 @@
                         <outlet property="homeTableView" destination="5uY-XU-MSn" id="1BK-dx-EII"/>
                         <outlet property="searchTextField" destination="br0-XO-kcw" id="p8l-fF-DqS"/>
                         <segue destination="HgS-hM-Wsg" kind="show" identifier="showRecipeDetail" id="54V-r3-qqH"/>
+                        <segue destination="eMd-f0-5u1" kind="show" identifier="toAddView" id="U6t-VZ-J7R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Oy-OU-GzZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3284.7328244274809" y="57.74647887323944"/>
+            <point key="canvasLocation" x="3242" y="-475"/>
+        </scene>
+        <!--AddRecipeViewController-->
+        <scene sceneID="o09-yf-b5D">
+            <objects>
+                <viewController title="AddRecipeViewController" id="eMd-f0-5u1" customClass="AddRecipeViewController" customModule="intershipApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XHh-wp-tiM">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTQ-hb-uXi">
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
+                                <color key="backgroundColor" name="darkBC"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="K9b-0c-0m1">
+                                <rect key="frame" x="20" y="103" width="353" height="749"/>
+                                <color key="backgroundColor" name="darkBC"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rB1-SX-bDi"/>
+                        <color key="backgroundColor" name="myWhite"/>
+                        <constraints>
+                            <constraint firstItem="K9b-0c-0m1" firstAttribute="top" secondItem="rB1-SX-bDi" secondAttribute="top" id="1u7-Tu-Lhr"/>
+                            <constraint firstItem="FTQ-hb-uXi" firstAttribute="top" secondItem="rB1-SX-bDi" secondAttribute="top" id="9kh-xZ-nC4"/>
+                            <constraint firstItem="rB1-SX-bDi" firstAttribute="trailing" secondItem="K9b-0c-0m1" secondAttribute="trailing" constant="20" id="E3a-6t-MDe"/>
+                            <constraint firstItem="rB1-SX-bDi" firstAttribute="trailing" secondItem="FTQ-hb-uXi" secondAttribute="trailing" id="fKy-7d-gkF"/>
+                            <constraint firstAttribute="bottom" secondItem="FTQ-hb-uXi" secondAttribute="bottom" id="kta-vV-0Cp"/>
+                            <constraint firstAttribute="bottom" secondItem="K9b-0c-0m1" secondAttribute="bottom" id="mBc-FE-NwJ"/>
+                            <constraint firstItem="K9b-0c-0m1" firstAttribute="leading" secondItem="rB1-SX-bDi" secondAttribute="leading" constant="20" id="oTx-tk-1mS"/>
+                            <constraint firstItem="FTQ-hb-uXi" firstAttribute="leading" secondItem="rB1-SX-bDi" secondAttribute="leading" id="wYe-yH-jGD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="jRR-Tb-cqm"/>
+                    <connections>
+                        <outlet property="addRecipeTable" destination="K9b-0c-0m1" id="VtH-eC-OYr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="43Q-0b-Jyh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4455.7251908396947" y="-87.323943661971839"/>
         </scene>
         <!--DetailViewController-->
         <scene sceneID="Fku-gF-Vk6">
@@ -416,7 +456,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S2d-XX-H9w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4064.8854961832058" y="57.74647887323944"/>
+            <point key="canvasLocation" x="4456" y="-794"/>
         </scene>
     </scenes>
     <resources>
@@ -430,6 +470,9 @@
         </namedColor>
         <namedColor name="lightBC">
             <color red="0.37299999594688416" green="0.44299998879432678" blue="0.6119999885559082" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="myWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

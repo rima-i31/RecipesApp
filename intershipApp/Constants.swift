@@ -16,4 +16,6 @@ struct K{
     let segueToDetails = "showRecipeDetail"
     let idRegistrationCell = "RegistrationViewCell"
     let segueToHome = "showHomeScreen"
+    let segueToAddMenu = "toAddView"
+    let addRecipeCell = "AddRecipeCell"
 }

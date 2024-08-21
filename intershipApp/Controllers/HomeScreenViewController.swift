@@ -21,13 +21,18 @@ class HomeScreenViewController: UIViewController {
     var loadingIndicator = UIActivityIndicatorView(style: .large)
     
     var k = K()
+    var user = UserData()
     var recipes: [RecipeModel] = []
     var foundRecipes: [RecipeModel] = []
     var searcManager = SearchManager()
     var recipeManager = RecipeManager()
     var toDetails = ToDetailsSegueManager()
     var isOnSearch:Bool = false
-    
+    var userRecipes: [RecipeModel] = []
+    var isShowingUserRecipes: Bool = false
+    var myRecipeButtonTittle = "My Recipes"
+    var isLoading: Bool = true
+    var addButton: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +41,13 @@ class HomeScreenViewController: UIViewController {
         self.navigationItem.title = "Recipes"
         
         self.navigationItem.hidesBackButton = true
+        
+        let myRecipesButton = UIBarButtonItem(title: myRecipeButtonTittle, style: .plain, target: self, action: #selector(myRecipesButtonTapped))
+        self.navigationItem.rightBarButtonItem = myRecipesButton
+        
+        addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+               addButton?.isHidden = true
+               navigationItem.leftBarButtonItem = addButton
         
         homeTableView.delegate = self
         homeTableView.dataSource = self
@@ -52,6 +64,7 @@ class HomeScreenViewController: UIViewController {
         
         
     }
+   
     func loadRandomRecipes() {
         for _ in 1...k.recipesCount {
             recipeManager.getRecipes()
@@ -78,6 +91,18 @@ class HomeScreenViewController: UIViewController {
         super.didReceiveMemoryWarning()
         ImageCache.shared.clearCache()
     }
+    @objc func myRecipesButtonTapped() {
+          isShowingUserRecipes.toggle()
+          myRecipeButtonTittle = isShowingUserRecipes ? "Back" : "My Recipes"
+        self.navigationItem.rightBarButtonItem?.title = myRecipeButtonTittle
+        addButton?.isHidden = !isShowingUserRecipes
+       
+          homeTableView.reloadSections(k.indexSet, with: .fade)
+        
+      }
+    @objc func addButtonTapped() {
+        performSegue(withIdentifier: k.segueToAddMenu, sender: self)
+       }
 }
 //MARK: - UITableViewDelegate
 extension HomeScreenViewController: UITableViewDelegate{
@@ -90,14 +115,19 @@ extension HomeScreenViewController: UITableViewDelegate{
 //MARK: - UITableViewDataSource
 extension HomeScreenViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let foundCellsCount = foundRecipes.isEmpty ? 1 : foundRecipes.count
-        return isOnSearch ? foundCellsCount : recipes.count
+
+        if isLoading {
+                return 0
+            }
+        let actualArray = isShowingUserRecipes ? userRecipes : (isOnSearch ? foundRecipes : recipes)
+        return actualArray.isEmpty ? 1 : actualArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let actualArray = isOnSearch ? foundRecipes : recipes
+     
+        let actualArray = isShowingUserRecipes ? userRecipes : (isOnSearch ? foundRecipes : recipes)
         let cellIdentifier = actualArray.isEmpty ? k.idErrorCell : k.idCell
-        
+
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? HomeScreenCellController {
             let recipe = actualArray[indexPath.row]
             cell.recipe = recipe
@@ -131,6 +161,7 @@ extension HomeScreenViewController: RecipeManagerDelegate{
             
             if self.recipes.count == self.k.recipesCount {
                 self.loadingIndicator.stopAnimating()
+                self.isLoading = false
                 self.homeTableView.reloadSections(self.k.indexSet, with: .fade)
             }
         }
