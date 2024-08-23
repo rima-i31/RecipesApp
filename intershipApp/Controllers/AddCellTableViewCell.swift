@@ -6,10 +6,12 @@
 //
 
 import UIKit
-
+protocol AddCellTableViewCellDelegate: AnyObject {
+    func didCreateRecipe()
+}
 
 class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+    var delegate: AddCellTableViewCellDelegate?
     @IBOutlet weak var recipeNameLabel: UILabel!
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -60,9 +62,11 @@ class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UI
         let measuredIngredientsStr = ingredientsArray.joined(separator: "\n")
         
         var imagePath = ""
-                if let image = selectedImage {
-                    imagePath = saveImageToDocuments(image: image)
-                }
+        if let image = selectedImage {
+            imagePath = saveImageToDocuments(image: image)
+        }else{
+            imagePath = saveImageToDocuments(image: UIImage(named: "imagePlaceholder")!)
+        }
         
         let newRecipe = RecipeModel(
             imageSrc: imagePath,
@@ -73,19 +77,20 @@ class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UI
             instructions: instructions
         )
         
-
-            var currentUserData = UserData.loadFromDefaults() ?? UserData()
-            
- 
-            if currentUserData.userRecipes == nil {
-                currentUserData.userRecipes = [newRecipe]
-            } else {
-                currentUserData.userRecipes?.append(newRecipe)
-            }
-            
-            currentUserData.saveToDefaults()
-            
+        
+        var currentUserData = UserData.loadFromDefaults() ?? UserData()
+        
+        
+        if currentUserData.userRecipes == nil {
+            currentUserData.userRecipes = [newRecipe]
+        } else {
+            currentUserData.userRecipes?.append(newRecipe)
+        }
+        
+        currentUserData.saveToDefaults()
+        
         print("Новый рецепт создан: \(newRecipe)")
+        self.delegate?.didCreateRecipe()
     }
     
     @IBAction func addImageTapped(_ sender: UIButton) {
@@ -123,20 +128,20 @@ class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UI
     }
     
     func saveImageToDocuments(image: UIImage) -> String {
-            let fileManager = FileManager.default
-            let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let imageName = UUID().uuidString + ".png"
-            let imageURL = documentDirectory.appendingPathComponent(imageName)
-            
-            if let imageData = image.pngData() {
-                do {
-                    try imageData.write(to: imageURL)
-                    print("Image saved successfully at \(imageURL)")
-                } catch {
-                    print("Error saving image: \(error)")
-                }
+        let fileManager = FileManager.default
+        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let imageName = UUID().uuidString + ".png"
+        let imageURL = documentDirectory.appendingPathComponent(imageName)
+        
+        if let imageData = image.pngData() {
+            do {
+                try imageData.write(to: imageURL)
+                print("Image saved successfully at \(imageURL)")
+            } catch {
+                print("Error saving image: \(error)")
             }
-            
-            return imageURL.path
         }
+        
+        return imageURL.path
+    }
 }

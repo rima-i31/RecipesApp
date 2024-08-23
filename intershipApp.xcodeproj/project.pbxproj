@@ -15,6 +15,7 @@
 		54173F9A2C73874B001038E3 /* AddCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54173F992C73874B001038E3 /* AddCellTableViewCell.swift */; };
 		542365C12C63BFE800EB952E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542365C02C63BFE800EB952E /* DetailViewController.swift */; };
 		5434362C2C677A160012B15B /* ToDetailsSegueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5434362B2C677A160012B15B /* ToDetailsSegueManager.swift */; };
+		5437D9412C7688FD0071A0E7 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5437D9402C7688FD0071A0E7 /* ImageLoader.swift */; };
 		548E9A672C665ACF00B414D3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548E9A662C665ACF00B414D3 /* Constants.swift */; };
 		548E9A692C665E3700B414D3 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548E9A682C665E3700B414D3 /* SearchManager.swift */; };
 		548E9A6B2C6687D100B414D3 /* NoRecipeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548E9A6A2C6687D100B414D3 /* NoRecipeCell.xib */; };
@@ -47,6 +48,7 @@
 		54173F992C73874B001038E3 /* AddCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCellTableViewCell.swift; sourceTree = "<group>"; };
 		542365C02C63BFE800EB952E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5434362B2C677A160012B15B /* ToDetailsSegueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDetailsSegueManager.swift; sourceTree = "<group>"; };
+		5437D9402C7688FD0071A0E7 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		548E9A662C665ACF00B414D3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		548E9A682C665E3700B414D3 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		548E9A6A2C6687D100B414D3 /* NoRecipeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoRecipeCell.xib; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				548E9A682C665E3700B414D3 /* SearchManager.swift */,
 				5434362B2C677A160012B15B /* ToDetailsSegueManager.swift */,
 				5496A21E2C6A036E005142A8 /* CashDictionary.swift */,
+				5437D9402C7688FD0071A0E7 /* ImageLoader.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				54FBE0012C63886800C0C76C /* RecipeData.swift in Sources */,
 				54FBDFEF2C6387B100C0C76C /* RegistrationViewCell.swift in Sources */,
 				548E9A672C665ACF00B414D3 /* Constants.swift in Sources */,
+				5437D9412C7688FD0071A0E7 /* ImageLoader.swift in Sources */,
 				548E9A692C665E3700B414D3 /* SearchManager.swift in Sources */,
 				54FBE0002C63886800C0C76C /* RecipeModel.swift in Sources */,
 				5496A21F2C6A036E005142A8 /* CashDictionary.swift in Sources */,

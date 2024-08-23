@@ -9,7 +9,7 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     
-   
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -25,8 +25,8 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let loadedUser = UserData.loadFromDefaults() {
-                user = loadedUser
-            }
+            user = loadedUser
+        }
         cellsArray = [nameCell, lastNameCell, phoneCell, birthdayCell, passwordCell, passswordVerificationCell]
         
         tableView.delegate = self
@@ -43,23 +43,23 @@ class RegisterViewController: UIViewController {
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         guard let firstName = user.firstName, !firstName.isEmpty,
-                      let lastName = user.lastName, !lastName.isEmpty,
-                      let phoneNumber = user.phoneNumber, !phoneNumber.isEmpty,
-                      let birthDay = user.birthDay, !birthDay.isEmpty,
-                      let password = user.password, !password.isEmpty,
-                      let passwordVerification = user.passwordVerification, !passwordVerification.isEmpty else {
-                    showAlert(message: "Please fill in all fields.")
-                    return
-                }
+              let lastName = user.lastName, !lastName.isEmpty,
+              let phoneNumber = user.phoneNumber, !phoneNumber.isEmpty,
+              let birthDay = user.birthDay, !birthDay.isEmpty,
+              let password = user.password, !password.isEmpty,
+              let passwordVerification = user.passwordVerification, !passwordVerification.isEmpty else {
+            showAlert(message: "Please fill in all fields.")
+            return
+        }
         
-                guard password == passwordVerification else {
-                    showAlert(message: "Passwords do not match.")
-                    return
-                }
+        guard password == passwordVerification else {
+            showAlert(message: "Passwords do not match.")
+            return
+        }
         
-                user.id = UUID().uuidString
-                user.saveToDefaults()
-                print(user)
+        user.id = UUID().uuidString
+        user.saveToDefaults()
+        print(user)
         
         performSegue(withIdentifier: k.segueToHome, sender: self)
     }
@@ -78,7 +78,7 @@ extension RegisterViewController: UITableViewDelegate{
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         let index = textField.tag
-
+        
         switch index{
         case 0: user.firstName = textField.text
         case 1: user.lastName = textField.text
@@ -142,26 +142,26 @@ extension RegisterViewController: UITextFieldDelegate {
 //MARK: - UITableViewDataSource
 extension RegisterViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return self.cellsArray.count
+        return self.cellsArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: k.idRegistrationCell, for: indexPath) as? RegistrationViewCell else {
+            return UITableViewCell()
+        }
+        cell.cellLabel.text = cellsArray[indexPath.row].cellName
+        cell.textField.tag = indexPath.row
+        cell.textField.delegate = self
+        
+        switch indexPath.row {
+        case 4, 5:
+            cell.textField.isSecureTextEntry = true
+            cell.textField.textContentType = .oneTimeCode
+        default:
+            break
         }
         
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: k.idRegistrationCell, for: indexPath) as? RegistrationViewCell else {
-                return UITableViewCell()
-            }
-            cell.cellLabel.text = cellsArray[indexPath.row].cellName
-            cell.textField.tag = indexPath.row
-            cell.textField.delegate = self
-            
-            switch indexPath.row {
-            case 4, 5:
-                cell.textField.isSecureTextEntry = true
-                cell.textField.textContentType = .oneTimeCode
-            default:
-                break
-            }
-            
-            return cell
-        }
-        
+        return cell
+    }
+    
 }

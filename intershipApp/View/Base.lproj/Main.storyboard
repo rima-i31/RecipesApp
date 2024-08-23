@@ -256,7 +256,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xRn-3E-SH8">
-                                        <rect key="frame" x="0.0" y="10" width="393" height="689"/>
+                                        <rect key="frame" x="0.0" y="10" width="393" height="739"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJB-iY-zmW" userLabel="SearchStack">
                                                 <rect key="frame" x="10" y="0.0" width="373" height="40"/>
@@ -286,7 +286,7 @@
                                                 </constraints>
                                             </stackView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5uY-XU-MSn">
-                                                <rect key="frame" x="10" y="50" width="373" height="639"/>
+                                                <rect key="frame" x="10" y="50" width="373" height="689"/>
                                                 <color key="backgroundColor" red="0.23956373449999999" green="0.28665656639999998" blue="0.39642840140000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="sectionIndexBackgroundColor" red="0.23956373449999999" green="0.28665656639999998" blue="0.39642840140000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </tableView>
@@ -309,7 +309,7 @@
                                     <constraint firstAttribute="trailing" secondItem="xRn-3E-SH8" secondAttribute="trailing" id="FKb-pp-S9r"/>
                                     <constraint firstItem="xRn-3E-SH8" firstAttribute="leading" secondItem="M3a-U0-coM" secondAttribute="leading" id="oOz-4D-amB"/>
                                     <constraint firstItem="xRn-3E-SH8" firstAttribute="top" secondItem="M3a-U0-coM" secondAttribute="top" constant="10" id="qGx-3b-6HR"/>
-                                    <constraint firstAttribute="bottom" secondItem="xRn-3E-SH8" secondAttribute="bottom" constant="50" id="qyv-Tz-OcJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="xRn-3E-SH8" secondAttribute="bottom" id="qyv-Tz-OcJ"/>
                                 </constraints>
                             </view>
                         </subviews>

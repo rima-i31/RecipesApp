@@ -16,59 +16,75 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     
-
-    
     var loadingIndicator = UIActivityIndicatorView(style: .large)
     
     var k = K()
-    var user = UserData()
-    var recipes: [RecipeModel] = []
-    var foundRecipes: [RecipeModel] = []
     var searcManager = SearchManager()
     var recipeManager = RecipeManager()
     var toDetails = ToDetailsSegueManager()
-    var isOnSearch:Bool = false
+    var addRecipeVC = AddRecipeViewController()
+    var user = UserData()
+    var recipes: [RecipeModel] = []
+    var foundRecipes: [RecipeModel] = []
     var userRecipes: [RecipeModel] = []
+    var isOnSearch:Bool = false
+    var isLoading: Bool = true
+    var isLoaded:Bool = false
     var isShowingUserRecipes: Bool = false
     var myRecipeButtonTittle = "My Recipes"
-    var isLoading: Bool = true
     var addButton: UIBarButtonItem?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let i = UIScreen.main.nativeScale
-        print(i)
+        //        let i = UIScreen.main.nativeScale
+        //        print(i)
         self.navigationItem.title = "Recipes"
-        
         self.navigationItem.hidesBackButton = true
-        
         let myRecipesButton = UIBarButtonItem(title: myRecipeButtonTittle, style: .plain, target: self, action: #selector(myRecipesButtonTapped))
         self.navigationItem.rightBarButtonItem = myRecipesButton
-        
         addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
-               addButton?.isHidden = true
-               navigationItem.leftBarButtonItem = addButton
+        addButton?.isHidden = true
+        navigationItem.leftBarButtonItem = addButton
         
+        searchTextField.delegate = self
+        recipeManager.delegate = self
         homeTableView.delegate = self
         homeTableView.dataSource = self
-        
-        
         homeTableView.register(UINib(nibName: k.idCell, bundle: nil), forCellReuseIdentifier: k.idCell)
         homeTableView.register(UINib(nibName: k.idErrorCell, bundle: nil), forCellReuseIdentifier: k.idErrorCell)
         
         setupLoadingIndicator()
-        recipeManager.delegate = self
         loadingIndicator.startAnimating()
         loadRandomRecipes()
-        searchTextField.delegate = self
+        loadUserRecipes()
         
-        
+        }
+//        override func viewWillAppear(_ animated: Bool) {
+//                super.viewWillAppear(animated)
+//                clearUserDefaults()
+//            }
+//    
+//            func clearUserDefaults() {
+//                let defaults = UserDefaults.standard
+//                if let appDomain = Bundle.main.bundleIdentifier {
+//                    defaults.removePersistentDomain(forName: appDomain)
+//                }
+//                defaults.synchronize()
+//            }
+    
+    
+    func loadUserRecipes() {
+        if let userData = UserData.loadFromDefaults(), let recipes = userData.userRecipes {
+            userRecipes = recipes
+            homeTableView.reloadSections(self.k.indexSet, with: .fade)
+            //homeTableView.reloadData()
+        }
     }
-   
+    
     func loadRandomRecipes() {
         for _ in 1...k.recipesCount {
             recipeManager.getRecipes()
-            
         }
     }
     func setupLoadingIndicator() {
@@ -78,7 +94,6 @@ class HomeScreenViewController: UIViewController {
         view.addSubview(loadingIndicator)
     }
     
-
     @IBAction func searchButtonTapped(_ sender: UIButton){
         view.endEditing(true)
     }
@@ -92,17 +107,27 @@ class HomeScreenViewController: UIViewController {
         ImageCache.shared.clearCache()
     }
     @objc func myRecipesButtonTapped() {
-          isShowingUserRecipes.toggle()
-          myRecipeButtonTittle = isShowingUserRecipes ? "Back" : "My Recipes"
+        isShowingUserRecipes.toggle()
+        myRecipeButtonTittle = isShowingUserRecipes ? "Back" : "My Recipes"
         self.navigationItem.rightBarButtonItem?.title = myRecipeButtonTittle
         addButton?.isHidden = !isShowingUserRecipes
-       
-          homeTableView.reloadSections(k.indexSet, with: .fade)
         
-      }
+        if isShowingUserRecipes{
+            self.loadingIndicator.stopAnimating()
+            self.isLoading = false
+            self.homeTableView.reloadSections(self.k.indexSet, with: .fade)
+        }else{
+            if !isLoaded{
+                self.loadingIndicator.startAnimating()
+                self.isLoading = true
+            }
+        }
+        self.reload()
+        homeTableView.reloadSections(k.indexSet, with: .fade)
+    }
     @objc func addButtonTapped() {
         performSegue(withIdentifier: k.segueToAddMenu, sender: self)
-       }
+    }
 }
 //MARK: - UITableViewDelegate
 extension HomeScreenViewController: UITableViewDelegate{
@@ -115,19 +140,21 @@ extension HomeScreenViewController: UITableViewDelegate{
 //MARK: - UITableViewDataSource
 extension HomeScreenViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         if isLoading {
-                return 0
-            }
-        let actualArray = isShowingUserRecipes ? userRecipes : (isOnSearch ? foundRecipes : recipes)
+            return 0
+        }
+        
+        let actualArray = isShowingUserRecipes ? (isOnSearch ? foundRecipes : userRecipes) : (isOnSearch ? foundRecipes : recipes)
         return actualArray.isEmpty ? 1 : actualArray.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     
-        let actualArray = isShowingUserRecipes ? userRecipes : (isOnSearch ? foundRecipes : recipes)
+        
+        let actualArray = isShowingUserRecipes ? (isOnSearch ? foundRecipes : userRecipes.reversed()) : (isOnSearch ? foundRecipes : recipes)
         let cellIdentifier = actualArray.isEmpty ? k.idErrorCell : k.idCell
-
+        
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? HomeScreenCellController {
             let recipe = actualArray[indexPath.row]
             cell.recipe = recipe
@@ -137,7 +164,6 @@ extension HomeScreenViewController: UITableViewDataSource{
         }else{
             return  UITableViewCell()
         }
-           
         
     }
     
@@ -162,6 +188,7 @@ extension HomeScreenViewController: RecipeManagerDelegate{
             if self.recipes.count == self.k.recipesCount {
                 self.loadingIndicator.stopAnimating()
                 self.isLoading = false
+                self.isLoaded = true
                 self.homeTableView.reloadSections(self.k.indexSet, with: .fade)
             }
         }
@@ -184,9 +211,14 @@ extension HomeScreenViewController {
                 if isOnSearch {
                     selectedRecipe = foundRecipes[indexPath.row]
                 } else {
-                    selectedRecipe = recipes[indexPath.row]
+                    selectedRecipe = isShowingUserRecipes ? userRecipes[indexPath.row] : recipes[indexPath.row]
                 }
                 toDetails.trnsferData(from: selectedRecipe, to: destinationVC)
+            }
+        }
+        if segue.identifier == k.segueToAddMenu {
+            if let addRecipeVC = segue.destination as? AddRecipeViewController {
+                addRecipeVC.delegate = self
             }
         }
     }
@@ -207,12 +239,21 @@ extension HomeScreenViewController:UITextFieldDelegate{
     }
     @objc func reload() {
         guard let name = searchTextField.text else { return }
-        foundRecipes = searcManager.search(recipe: name, in: recipes)
-        
+        if isShowingUserRecipes {
+            foundRecipes = searcManager.search(recipe: name, in: userRecipes)
+        } else {
+            foundRecipes = searcManager.search(recipe: name, in: recipes)
+        }
         homeTableView.reloadSections(k.indexSet, with: .fade)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         return true
+    }
+}
+
+extension HomeScreenViewController: UpdateUserRecipesCellsDelegate{
+    func didAddRecipe() {
+        loadUserRecipes()
     }
 }
