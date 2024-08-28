@@ -70,7 +70,7 @@ struct RecipeManager{
             
             
             let imageSrc = decodedData.meals[0].strMealThumb
-            let recipe = RecipeModel(imageSrc: imageSrc, mealName: name, ingredients: ingredientsString, id: idMeel, measuredIngredients: measuredIngredientsStr, instructions: instructionsStr)
+            let recipe = RecipeModel(imageSrc: imageSrc, mealName: name, ingredients: ingredientsString, id: idMeel, measuredIngredients: measuredIngredientsStr, instructions: instructionsStr, isLocal: false)
             return recipe
         } catch{
             delegate?.didFailWithError(error: error)

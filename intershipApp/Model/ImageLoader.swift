@@ -31,17 +31,6 @@ class ImageLoader {
         indicator?.stopAnimating()
     }
 
-//    private func loadLocalImage(_ urlString: String, into imageView: UIImageView, with indicator: UIActivityIndicatorView?) {
-//        if let localUrl = URL(string: urlString), FileManager.default.fileExists(atPath: localUrl.path),
-//           let image = UIImage(contentsOfFile: localUrl.path) {
-//            let resizedImage = ImageCache.shared.resizeImage(image: image)
-//            ImageCache.shared.setImage(resizedImage, forKey: urlString)
-//            setImage(resizedImage, into: imageView, with: indicator)
-//        } else {
-//            print("Failed to load image from path: \(urlString)")
-//        }
-//    }
-//  
     private func loadLocalImage(_ urlString: String, into imageView: UIImageView, with indicator: UIActivityIndicatorView?) {
             let fileManager = FileManager.default
             let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!

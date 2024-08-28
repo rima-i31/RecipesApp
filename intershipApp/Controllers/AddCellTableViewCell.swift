@@ -74,7 +74,8 @@ class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UI
             ingredients: ingredientsString,
             id: UUID().uuidString,
             measuredIngredients: measuredIngredientsStr,
-            instructions: instructions
+            instructions: instructions,
+            isLocal: true
         )
         
         

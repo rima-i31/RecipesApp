@@ -37,8 +37,6 @@ class HomeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        let i = UIScreen.main.nativeScale
-        //        print(i)
         self.navigationItem.title = "Recipes"
         self.navigationItem.hidesBackButton = true
         let myRecipesButton = UIBarButtonItem(title: myRecipeButtonTittle, style: .plain, target: self, action: #selector(myRecipesButtonTapped))
@@ -56,33 +54,35 @@ class HomeScreenViewController: UIViewController {
         
         setupLoadingIndicator()
         loadingIndicator.startAnimating()
-        loadRandomRecipes()
-        loadUserRecipes()
-        
+        //        loadRandomRecipes()
+        //
+        //        loadUserRecipes()
+        //        homeTableView.reloadData()
+        //    }
+        if let savedRecipes = user.loadRecipesFromUserDefaults() {
+            recipes = savedRecipes
+            isLoading = false
+            isLoaded = true
+            loadingIndicator.stopAnimating()
+        } else {
+            loadRandomRecipes()
         }
-//        override func viewWillAppear(_ animated: Bool) {
-//                super.viewWillAppear(animated)
-//                clearUserDefaults()
-//            }
-//    
-//            func clearUserDefaults() {
-//                let defaults = UserDefaults.standard
-//                if let appDomain = Bundle.main.bundleIdentifier {
-//                    defaults.removePersistentDomain(forName: appDomain)
-//                }
-//                defaults.synchronize()
-//            }
+        
+        loadUserRecipes()
+        homeTableView.reloadData()
+    }
     
     
     func loadUserRecipes() {
         if let userData = UserData.loadFromDefaults(), let recipes = userData.userRecipes {
             userRecipes = recipes
             homeTableView.reloadSections(self.k.indexSet, with: .fade)
-            //homeTableView.reloadData()
         }
     }
     
     func loadRandomRecipes() {
+        CoreDataManager.shared.deleteAllRecipesFromCoreData()
+       CoreDataManager.shared.printAllRecipesFromCoreData()
         for _ in 1...k.recipesCount {
             recipeManager.getRecipes()
         }
@@ -181,6 +181,7 @@ extension HomeScreenViewController: RecipeManagerDelegate{
             }
             if isNew{
                 self.recipes.append(newRecipe)
+               // CoreDataManager.shared.insert(recipeId: newRecipe.id, isFavourite: false)//
             }else{
                 self.recipeManager.getRecipes()
             }
@@ -190,6 +191,8 @@ extension HomeScreenViewController: RecipeManagerDelegate{
                 self.isLoading = false
                 self.isLoaded = true
                 self.homeTableView.reloadSections(self.k.indexSet, with: .fade)
+                
+                self.user.saveRecipesToUserDefaults(self.recipes)
             }
         }
     }

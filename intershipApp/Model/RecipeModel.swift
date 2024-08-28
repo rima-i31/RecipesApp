@@ -14,4 +14,5 @@ struct RecipeModel: Codable{
     let id: String
     let measuredIngredients: String
     let instructions: String
+    let isLocal: Bool
 }

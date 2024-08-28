@@ -29,4 +29,5 @@ class RegistrationViewCell: UITableViewCell {
 //        super.setSelected(selected, animated: animated)
 //
 //    }
+ 
 }
