@@ -25,6 +25,11 @@ class DetailViewController: UIViewController {
         if let imageSrc = imageSrc {
             ImageLoader.shared.loadImage(from: imageSrc, into: recipeImage, with: nil)
         }
+//        if let imageSrc = imageSrc {
+//            ImageLoader.shared.loadImage(from: imageSrc, into: recipeImage, with: nil)
+//             } else {
+//                 recipeImage.image = UIImage(named: "placeholderImage") 
+//             }
         
         ingredientsLabel.text = measuredIngredients
         instructionsLabel.text = instructions

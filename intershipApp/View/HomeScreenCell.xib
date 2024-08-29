@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mwF-Ar-rYh" userLabel="HStack">
-                        <rect key="frame" x="0.0" y="10" width="393" height="108"/>
+                        <rect key="frame" x="15" y="10" width="363" height="108"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QvT-1G-EH5">
                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -28,7 +28,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nhF-85-yLQ">
-                                <rect key="frame" x="120" y="0.0" width="203" height="47.333333333333336"/>
+                                <rect key="frame" x="120" y="0.0" width="173" height="47.333333333333336"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pasta" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkH-4E-lTF">
                                         <rect key="frame" x="0.0" y="0.0" width="50.666666666666664" height="25.333333333333332"/>
@@ -45,7 +45,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVh-mG-Nxf">
-                                <rect key="frame" x="343" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="313" y="0.0" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="SwJ-pG-YM0"/>
                                     <constraint firstAttribute="width" constant="30" id="rfY-SH-6wK"/>
@@ -66,7 +66,7 @@
                         </constraints>
                     </stackView>
                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" id="uhL-xn-abp">
-                        <rect key="frame" x="40" y="55" width="17" height="19"/>
+                        <rect key="frame" x="55" y="55" width="17" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="color" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </activityIndicatorView>
@@ -74,9 +74,9 @@
                 <color key="backgroundColor" name="darkBC"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="mwF-Ar-rYh" secondAttribute="bottom" id="5DJ-kw-Blo"/>
+                    <constraint firstItem="mwF-Ar-rYh" firstAttribute="leading" secondItem="qkP-tG-rSd" secondAttribute="leading" constant="15" id="BQp-Au-1kr"/>
                     <constraint firstItem="mwF-Ar-rYh" firstAttribute="top" secondItem="qkP-tG-rSd" secondAttribute="top" constant="10" id="DU3-pa-vAq"/>
-                    <constraint firstItem="mwF-Ar-rYh" firstAttribute="leading" secondItem="qkP-tG-rSd" secondAttribute="leading" id="Qah-Za-N6d"/>
-                    <constraint firstAttribute="trailing" secondItem="mwF-Ar-rYh" secondAttribute="trailing" id="huM-8n-cox"/>
+                    <constraint firstAttribute="trailing" secondItem="mwF-Ar-rYh" secondAttribute="trailing" constant="15" id="q3C-q0-UYZ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

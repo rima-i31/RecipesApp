@@ -6,6 +6,10 @@
 //
 
 import Foundation
+extension Notification.Name {
+    static let recipesUpdated = Notification.Name("recipesUpdated")
+}
+
 
 struct UserData: Codable{
     var firstName: String?
@@ -36,6 +40,7 @@ struct UserData: Codable{
         if let encoded = try? JSONEncoder().encode(recipes) {
             UserDefaults.standard.set(encoded, forKey: "SavedRecipes")
         }
+      
     }
     func loadRecipesFromUserDefaults() -> [RecipeModel]? {
         if let savedRecipesData = UserDefaults.standard.object(forKey: "SavedRecipes") as? Data {

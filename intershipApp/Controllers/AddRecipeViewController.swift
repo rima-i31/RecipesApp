@@ -7,22 +7,20 @@
 
 import UIKit
 
-protocol UpdateUserRecipesCellsDelegate: AnyObject{
-    func didAddRecipe()
-}
-
 class AddRecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddCellTableViewCellDelegate {
-    
-    var delegate: UpdateUserRecipesCellsDelegate?
+ 
     @IBOutlet weak var addRecipeTable: UITableView!
     
     var k = K()
     var imagePath: String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addRecipeTable.delegate = self
         addRecipeTable.dataSource = self
         addRecipeTable.register(UINib(nibName: k.addRecipeCell, bundle: nil), forCellReuseIdentifier: k.addRecipeCell)
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,10 +36,7 @@ class AddRecipeViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     func didCreateRecipe() {
-        
-        self.delegate?.didAddRecipe()
         self.navigationController?.popViewController(animated: true)
-        
     }
 }
 

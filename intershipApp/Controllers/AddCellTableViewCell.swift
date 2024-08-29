@@ -92,6 +92,7 @@ class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UI
         
         print("Новый рецепт создан: \(newRecipe)")
         self.delegate?.didCreateRecipe()
+        NotificationCenter.default.post(name: .userRecipesUpdated, object: nil)
     }
     
     @IBAction func addImageTapped(_ sender: UIButton) {

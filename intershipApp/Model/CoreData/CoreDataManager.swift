@@ -9,6 +9,9 @@ import Foundation
 import CoreData
 import UIKit
 
+
+
+
 class CoreDataManager{
     static let shared = CoreDataManager()
     private init() {}
@@ -22,6 +25,8 @@ class CoreDataManager{
         favouriteRecipe.id = recipeId
         favouriteRecipe.isLocal = isLocal
         saveContext()
+        
+        NotificationCenter.default.post(name: .favouritesUpdated, object: nil)
     }
     
     func deleteFavourite(recipeId: String){
@@ -32,10 +37,12 @@ class CoreDataManager{
             if let favouriteRecipe = results.first {
                 context.delete(favouriteRecipe)
                 saveContext()
+                NotificationCenter.default.post(name: .favouritesUpdated, object: nil)
             }
         } catch {
             print("Failed to delete favourite recipe: \(error)")
         }
+       
     }
     
     func isFavouriteRecipe(id: String) -> Bool {
@@ -87,6 +94,19 @@ class CoreDataManager{
             print("Failed to delete all recipes from Core Data: \(error)")
         }
     }
+    func fetchAllFavouriteRecipeIDs() -> [String] {
+        let fetchRequest: NSFetchRequest<FavouriteRecipe> = FavouriteRecipe.fetchRequest()
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            return results.compactMap { $0.id }
+        } catch {
+            print("Failed to fetch favourite recipe IDs: \(error)")
+            return []
+        }
+    }
+
+
     //    func printRecipeFromCoreData(id: String){
     //        let fetchRequest: NSFetchRequest<FavouriteRecipe> = FavouriteRecipe.fetchRequest()
     //        fetchRequest.predicate = NSPredicate(format: "id == %@", id)

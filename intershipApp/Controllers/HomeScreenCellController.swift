@@ -62,5 +62,20 @@ class HomeScreenCellController: UITableViewCell {
         toFavButton.tintColor = .gray
         toFavButton.setImage(UIImage(systemName: "star"), for: .normal)
     }
-    
+    override func awakeFromNib() {
+           super.awakeFromNib()
+           NotificationCenter.default.addObserver(self, selector: #selector(favouritesDidUpdate(_:)), name: .favouritesUpdated, object: nil)
+       }
+       
+       deinit {
+           NotificationCenter.default.removeObserver(self, name: .favouritesUpdated, object: nil)
+       }
+    @objc private func favouritesDidUpdate(_ notification: Notification) {
+            guard let recipeID = recipe?.id else { return }
+            if CoreDataManager.shared.isFavouriteRecipe(id: recipeID) {
+                setFavoriteState()
+            } else {
+                setUnfavoriteState()
+            }
+        }
 }
