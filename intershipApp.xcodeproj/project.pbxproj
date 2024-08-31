@@ -33,6 +33,7 @@
 		549601292C638F70000EFE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 549601282C638F70000EFE06 /* Assets.xcassets */; };
 		5496A21F2C6A036E005142A8 /* CashDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5496A21E2C6A036E005142A8 /* CashDictionary.swift */; };
 		54AE1D012C80AAE5003B2A23 /* notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AE1D002C80AAE5003B2A23 /* notifications.swift */; };
+		54D66FFF2C830449003C201F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54D66FFE2C830449003C201F /* Auth.storyboard */; };
 		54EE1BDC2C637FF7005EBB00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54EE1BDA2C637FF7005EBB00 /* Main.storyboard */; };
 		54FBDFE42C63852900C0C76C /* RegistrationViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FBDFE32C63852900C0C76C /* RegistrationViewCell.xib */; };
 		54FBDFE62C63853700C0C76C /* HomeScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54FBDFE52C63853700C0C76C /* HomeScreenCell.xib */; };
@@ -76,6 +77,7 @@
 		549601282C638F70000EFE06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5496A21E2C6A036E005142A8 /* CashDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashDictionary.swift; sourceTree = "<group>"; };
 		54AE1D002C80AAE5003B2A23 /* notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notifications.swift; sourceTree = "<group>"; };
+		54D66FFE2C830449003C201F /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		54EE1BDB2C637FF7005EBB00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		54FBDFE32C63852900C0C76C /* RegistrationViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationViewCell.xib; sourceTree = "<group>"; };
 		54FBDFE52C63853700C0C76C /* HomeScreenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreenCell.xib; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				54FBDFE32C63852900C0C76C /* RegistrationViewCell.xib */,
 				54FBDFE52C63853700C0C76C /* HomeScreenCell.xib */,
 				54EE1BDA2C637FF7005EBB00 /* Main.storyboard */,
+				54D66FFE2C830449003C201F /* Auth.storyboard */,
 				5411A97F2C5E1E4B00AB3695 /* LaunchScreen.storyboard */,
 				548E9A6A2C6687D100B414D3 /* NoRecipeCell.xib */,
 				54173F972C738576001038E3 /* AddRecipeCell.xib */,
@@ -253,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54D66FFF2C830449003C201F /* Auth.storyboard in Resources */,
 				54FBDFE42C63852900C0C76C /* RegistrationViewCell.xib in Resources */,
 				5478A5E42C7F9988003F818A /* RecipesTableViewController.xib in Resources */,
 				54EE1BDC2C637FF7005EBB00 /* Main.storyboard in Resources */,

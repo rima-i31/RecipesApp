@@ -79,6 +79,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
         defaults.synchronize()
         navigationController?.popToRootViewController(animated: true)
+        //print(self.navigationController?.viewControllers)
        }
 
 }

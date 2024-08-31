@@ -45,10 +45,15 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
     
     func loadUserRecipes() {
+//        if let userData = UserData.loadFromDefaults(), let recipes = userData.userRecipes {
+//            userRecipes = recipes
+//            recipesTableVC.tableView.reloadSections(self.k.indexSet, with: .fade)
+//        }
         if let userData = UserData.loadFromDefaults(), let recipes = userData.userRecipes {
-            userRecipes = recipes
-            recipesTableVC.tableView.reloadSections(self.k.indexSet, with: .fade)
-        }
+                    userRecipes = recipes
+                } else {
+                    userRecipes = []
+                }
     }
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
@@ -87,6 +92,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     func toggleButtonTapped() {
         isShowingUserRecipes.toggle()
+        loadUserRecipes()  
         updateToggleButtonTitle()
         reload()
     }
