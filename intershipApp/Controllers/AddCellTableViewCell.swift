@@ -10,7 +10,7 @@ protocol AddCellTableViewCellDelegate: AnyObject {
     func didCreateRecipe()
 }
 
-class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate{
     var delegate: AddCellTableViewCellDelegate?
     @IBOutlet weak var recipeNameLabel: UILabel!
     
@@ -34,13 +34,14 @@ class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UI
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        nameTextField.delegate = self
+        ingredientsTextView.delegate = self
+        instructionsTextView.delegate = self
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
     }
     
     @IBAction func doneButtonTapped(_ sender: UIButton) {
@@ -146,4 +147,20 @@ class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UI
         
         return imageURL.path
     }
+    // MARK: - UITextFieldDelegate
+       
+       func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           textField.resignFirstResponder()
+           return true
+       }
+
+       // MARK: - UITextViewDelegate
+       
+       func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+           if text == "\n" {
+               textView.resignFirstResponder()
+               return false
+           }
+           return true
+       }
 }

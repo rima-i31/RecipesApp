@@ -14,15 +14,15 @@
             <objects>
                 <viewController storyboardIdentifier="AddRecipeViewController" title="AddRecipeViewController" id="eMd-f0-5u1" customClass="AddRecipeViewController" customModule="intershipApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XHh-wp-tiM">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTQ-hb-uXi">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <color key="backgroundColor" name="darkBC"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="K9b-0c-0m1">
-                                <rect key="frame" x="20" y="0.0" width="353" height="842"/>
+                                <rect key="frame" x="20" y="103" width="353" height="749"/>
                                 <color key="backgroundColor" name="darkBC"/>
                             </tableView>
                         </subviews>
@@ -217,6 +217,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" id="aR6-Pq-Jm7"/>
+                    <connections>
+                        <segue destination="eMd-f0-5u1" kind="show" identifier="toAddView" id="i9q-ch-1EK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0m-qM-tYE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -248,7 +251,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nac-wm-9Xf" userLabel="SearchStack">
-                                <rect key="frame" x="0.0" y="103" width="393" height="40"/>
+                                <rect key="frame" x="0.0" y="104" width="393" height="40"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter the meel name or ingredients" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fC1-5V-rWO">
                                         <rect key="frame" x="0.0" y="0.0" width="343.33333333333331" height="40"/>
@@ -280,7 +283,7 @@
                         <constraints>
                             <constraint firstItem="mgH-Ag-wAR" firstAttribute="trailing" secondItem="Nac-wm-9Xf" secondAttribute="trailing" id="FD8-eA-ifC"/>
                             <constraint firstItem="Nac-wm-9Xf" firstAttribute="leading" secondItem="ZbR-Ea-Wha" secondAttribute="leading" id="OgA-vX-2UE"/>
-                            <constraint firstItem="Nac-wm-9Xf" firstAttribute="top" secondItem="mgH-Ag-wAR" secondAttribute="top" id="gv6-C9-34S"/>
+                            <constraint firstItem="Nac-wm-9Xf" firstAttribute="top" secondItem="mgH-Ag-wAR" secondAttribute="top" constant="1" id="gv6-C9-34S"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Z14-sk-Jzi"/>
@@ -373,6 +376,9 @@
             <point key="canvasLocation" x="5160" y="1144"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="i9q-ch-1EK"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="magnifyingglass.circle" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>

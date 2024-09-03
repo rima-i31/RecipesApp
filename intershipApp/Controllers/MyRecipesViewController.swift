@@ -14,9 +14,11 @@ class MyRecipesViewController: UIViewController {
     var user = UserData()
     var recipesTableVC = RecipesTableViewController()
     var addRecipeVC = AddRecipeViewController()
-    
+    var addButton: UIBarButtonItem?
     override func viewDidLoad() {
         super.viewDidLoad()
+        addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = addButton
         let appearance = UINavigationBarAppearance()
         
         appearance.backgroundColor = .white
@@ -36,7 +38,9 @@ class MyRecipesViewController: UIViewController {
         
         recipesTableVC.tableView.reloadData()
     }
-    
+    @objc func addButtonTapped() {
+            performSegue(withIdentifier: k.segueToAddMenu, sender: self)
+        }
     @objc func recipesDidUpdate() {
         loadUserRecipes()
         recipesTableVC.tableView.reloadData()
