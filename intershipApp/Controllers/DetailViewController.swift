@@ -15,6 +15,14 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var instructionsLabel: UILabel!
     
+    @IBOutlet weak var detailStackView: UIStackView!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var scrollContainerView: UIView!
+    
+    
+    
     var imageSrc: String?
     var mealName: String?
     var measuredIngredients: String?
@@ -22,14 +30,14 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 1.0
+           scrollView.maximumZoomScale = 3.0
+        
         if let imageSrc = imageSrc {
             ImageLoader.shared.loadImage(from: imageSrc, into: recipeImage, with: nil)
         }
-//        if let imageSrc = imageSrc {
-//            ImageLoader.shared.loadImage(from: imageSrc, into: recipeImage, with: nil)
-//             } else {
-//                 recipeImage.image = UIImage(named: "placeholderImage") 
-//             }
+
         
         ingredientsLabel.text = measuredIngredients
         instructionsLabel.text = instructions
@@ -37,6 +45,17 @@ class DetailViewController: UIViewController {
         
         let rightBarButton = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(rightBarButtonTapped))
         self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        recipeImage.contentMode = .scaleAspectFill
+        scrollContainerView.layer.shadowColor = UIColor.black.cgColor
+        scrollContainerView.layer.shadowOpacity = 0.5
+        scrollContainerView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        scrollContainerView.clipsToBounds = false
+        scrollView.layer.cornerRadius = 16
+        scrollContainerView.layer.cornerRadius = 16
+        recipeImage.layer.cornerRadius = 16
+        scrollView.clipsToBounds = true
+        recipeImage.clipsToBounds = true
         
     }
     @objc func rightBarButtonTapped() {
@@ -47,4 +66,10 @@ class DetailViewController: UIViewController {
         present(activityController, animated: true, completion: nil)
     }
     
+}
+
+extension DetailViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return recipeImage
+    }
 }

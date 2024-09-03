@@ -26,8 +26,10 @@ class AllRecipesViewController: UIViewController, RecipeManagerDelegate {
         let appearance = UINavigationBarAppearance()
         
         appearance.backgroundColor = .white
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        self.title = "Recipes"
         
         recipeManager.delegate = self
         setupLoadingIndicator()

@@ -17,6 +17,13 @@ class MyRecipesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appearance = UINavigationBarAppearance()
+        
+        appearance.backgroundColor = .white
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        self.title = "My Recipes"
         NotificationCenter.default.addObserver(self, selector: #selector(recipesDidUpdate), name: .userRecipesUpdated, object: nil)
         
         loadUserRecipes()

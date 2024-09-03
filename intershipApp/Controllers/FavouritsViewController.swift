@@ -20,13 +20,36 @@ class FavouritsViewController: UIViewController {
     var isShowingUserRecipes : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        self.title = "Favorites"
+               toggleFav = UIBarButtonItem(title: "My Recipes", style: .plain, target: self, action: #selector(toggleFavButtonTapped))
+               self.navigationItem.rightBarButtonItem = toggleFav
+               
         getFavourits()
         recipesTableVC.dataSource = favourits
+        
+        
+        
+//        
+//        //recipesTableVC.updateData(foundRecipes)
+//        //addChild(recipesTableVC)
+//        //view.addSubview(recipesTableVC.view)
+//        //recipesTableVC.didMove(toParent: self)
+//        recipesTableVC.view.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            recipesTableVC.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+//            recipesTableVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            recipesTableVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            recipesTableVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//        ])
         addChild(recipesTableVC)
         view.addSubview(recipesTableVC.view)
         recipesTableVC.didMove(toParent: self)
         recipesTableVC.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(favouritesDidUpdate), name: .favouritesUpdated, object: nil)
     }
     @objc func favouritesDidUpdate() {
@@ -50,14 +73,14 @@ class FavouritsViewController: UIViewController {
         recipesTableVC.dataSource = favourits
         recipesTableVC.tableView.reloadData()
     }
-    func updateToggleButtonTitle() {
-        if let tabBarController = self.tabBarController as? TabBarController {
-            tabBarController.toggleFav?.title = isShowingUserRecipes ? "All Recipes" : "My Recipes"
-        }
-    }
-    func toggleFavButtonTapped() {
-        isShowingUserRecipes.toggle()
-        updateToggleButtonTitle()
-        getFavourits()
-    }
+
+    @objc func toggleFavButtonTapped() {
+           isShowingUserRecipes.toggle()
+           updateToggleButtonTitle()
+           getFavourits()
+       }
+
+       func updateToggleButtonTitle() {
+           toggleFav?.title = isShowingUserRecipes ? "All Recipes" : "My Recipes"
+       }
 }
