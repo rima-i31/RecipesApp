@@ -39,8 +39,8 @@ class MyRecipesViewController: UIViewController {
         recipesTableVC.tableView.reloadData()
     }
     @objc func addButtonTapped() {
-            performSegue(withIdentifier: k.segueToAddMenu, sender: self)
-        }
+        performSegue(withIdentifier: k.segueToAddMenu, sender: self)
+    }
     @objc func recipesDidUpdate() {
         loadUserRecipes()
         recipesTableVC.tableView.reloadData()

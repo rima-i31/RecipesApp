@@ -14,21 +14,20 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     var k = K()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.delegate = self
-                NotificationCenter.default.addObserver(
-                    self,
-                    selector: #selector(handleMemoryWarning),
-                    name: UIApplication.didReceiveMemoryWarningNotification,
-                    object: nil
-                )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleMemoryWarning),
+            name: UIApplication.didReceiveMemoryWarningNotification,
+            object: nil
+        )
         
         
     }
-
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-           //updateNavigationBar(for: selectedIndex)
-       }
+    }
     @objc func handleMemoryWarning() {
         let defaults = UserDefaults.standard
         

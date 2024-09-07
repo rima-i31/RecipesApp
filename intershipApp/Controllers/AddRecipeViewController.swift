@@ -8,7 +8,7 @@
 import UIKit
 
 class AddRecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddCellTableViewCellDelegate {
- 
+    
     @IBOutlet weak var addRecipeTable: UITableView!
     
     var k = K()

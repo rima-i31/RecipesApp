@@ -33,7 +33,7 @@ class AllRecipesViewController: UIViewController, RecipeManagerDelegate {
         
         recipeManager.delegate = self
         setupLoadingIndicator()
-       
+        
         if let savedRecipes = user.loadRecipesFromUserDefaults() {
             recipes = savedRecipes
             isLoaded = true
@@ -96,5 +96,5 @@ class AllRecipesViewController: UIViewController, RecipeManagerDelegate {
         }
     }
     
-   
+    
 }

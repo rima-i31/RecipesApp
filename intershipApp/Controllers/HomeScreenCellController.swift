@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 extension Notification.Name {
     static let startedSwipe = Notification.Name("startedSwipe")
 }
@@ -62,103 +63,110 @@ class HomeScreenCellController: UITableViewCell {
     }
     @objc private func closeSwipes(_ notification: Notification){
         guard let userInfo = notification.userInfo, let swipedCellID = userInfo["cellID"] as? String else { return }
-        
         if swipedCellID != self.cellID {
-            rightConstraint.constant = 15
-            toFavSlideBut.isHidden = true
+            resetSwipeState()
         }
     }
+    private func resetSwipeState() {
+        rightConstraint.constant = 15
+        toFavSlideBut.isHidden = true
+        toFavButton.isHidden = false
+        animateCellLayout()
+    }
+    
     @objc private func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
         NotificationCenter.default.post(name: .startedSwipe, object: nil, userInfo: ["cellID": self.cellID])
         toFavSlideBut.isHidden = false
         switch gesture.direction {
         case .left:
+            toFavButton.isHidden = true
             rightConstraint.constant = 115
             
         case .right:
+            toFavButton.isHidden = false
             rightConstraint.constant = 15
         default:
             break
         }
-        cellReloadStatus()
+        animateCellLayout()
     }
-    func cellReloadStatus(){
+    func animateCellLayout(){
         UIView.animate(withDuration: 0.3) {
             self.layoutIfNeeded()
         }
     }
     
     @IBAction func toFavSlideButTapped(_ sender: UIButton) {
-        guard let recipeID = recipe?.id, let isLocalRecipe = recipe?.isLocal else { return }
+        
+        guard let recipeID = recipe?.id else { return }
         let isCurrentlyFavorite = CoreDataManager.shared.isFavouriteRecipe(id: recipeID)
+        presentCustomAlert(for: isCurrentlyFavorite ? .remove : .add, recipeID: recipeID)
         
-        if !isCurrentlyFavorite {
-            
-            setFavoriteState()
-            CoreDataManager.shared.addFavourite(recipeId: recipeID, isLocal: isLocalRecipe)
-            CoreDataManager.shared.printAllRecipesFromCoreData()
-        } else {
-            presentRemoveFavoriteAlert(recipeID: recipeID)            }
-        
-        CoreDataManager.shared.printAllRecipesFromCoreData()
     }
-    private func presentRemoveFavoriteAlert(recipeID: String) {
-        guard let viewController = self.parentViewController else { return }
-        
-        let alert = UIAlertController(title: "Remove from Favorites?",
-                                      message: "Are you sure you want to remove this recipe from your favorites?",
-                                      preferredStyle: .alert)
-        
-        let removeAction = UIAlertAction(title: "Remove", style: .destructive) { _ in
-            self.setUnfavoriteState()
-            CoreDataManager.shared.deleteFavourite(recipeId: recipeID)
+    private func presentCustomAlert(for actionType: AlertActionType, recipeID: String) {
+        guard let viewController = parentViewController else { return }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let customAlert = storyboard.instantiateViewController(withIdentifier: "AlertViewController") as? AlertViewController {
+            customAlert.delegate = self
+            customAlert.actionType = actionType
+            customAlert.recipeId = recipeID
+            customAlert.loadViewIfNeeded()
+            configureAlert(customAlert, for: actionType)
+            customAlert.modalPresentationStyle = .overCurrentContext
+            customAlert.modalTransitionStyle = .crossDissolve
+            viewController.present(customAlert, animated: true)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){_ in
-            self.rightConstraint.constant = 15
-            self.toFavSlideBut.isHidden = true
-            self.cellReloadStatus()
-        }
-        
-        alert.addAction(removeAction)
-        alert.addAction(cancelAction)
-        
-        viewController.present(alert, animated: true, completion: nil)
     }
     
+    private func configureAlert(_ alert: AlertViewController, for actionType: AlertActionType) {
+        switch actionType {
+        case .add:
+            alert.alertTitle.text = "Add to Favorites?"
+            alert.subTitle.text = "Are you sure you want to add this recipe to your favorites?"
+            alert.noButton.backgroundColor = .systemRed
+            alert.yesButton.backgroundColor = .systemGreen
+        case .remove:
+            alert.alertTitle.text = "Remove from Favorites?"
+            alert.subTitle.text = "Are you sure you want to remove this recipe from your favorites?"
+            alert.noButton.backgroundColor = .systemGreen
+            alert.yesButton.backgroundColor = .systemRed
+        case .cancel:
+            break
+        default: break
+        }
+    }
     private var parentViewController: UIViewController? {
         var parentResponder: UIResponder? = self
         while parentResponder != nil {
             parentResponder = parentResponder?.next
-            if let viewController = parentResponder as? UIViewController {
-                return viewController
+            if let tabBarController = parentResponder as? UITabBarController {
+                return tabBarController
             }
         }
         return nil
     }
-    
     private func setFavoriteState() {
         toFavButton.tintColor = .yellow
         toFavButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
-        
         rightConstraint.constant = 15
-        cellReloadStatus()
+        animateCellLayout()
         toFavSlideBut.setImage(UIImage(systemName: "star.slash"), for: .normal)
         toFavSlideBut.backgroundColor = UIColor(named: "deleteColor")
         toFavSlideBut.isHidden = true
+        toFavButton.isHidden = false
     }
     
     private func setUnfavoriteState() {
         toFavButton.tintColor = .gray
         toFavButton.setImage(UIImage(systemName: "star"), for: .normal)
-        
         rightConstraint.constant = 15
-        cellReloadStatus()
+        animateCellLayout()
         toFavSlideBut.setImage(UIImage(systemName: "star"), for: .normal)
         toFavSlideBut.backgroundColor = .yellow
         toFavSlideBut.isHidden = true
+        toFavButton.isHidden = false
     }
-    
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: .favouritesUpdated, object: nil)
@@ -171,5 +179,22 @@ class HomeScreenCellController: UITableViewCell {
         } else {
             setUnfavoriteState()
         }
+    }
+}
+extension HomeScreenCellController: CustomAlertDelegate {
+    func alertAction(_ controller: AlertViewController, didPressButton actionType: AlertActionType, forRecipeId recipeId: String) {
+        switch actionType {
+        case .add:
+            setFavoriteState()
+            CoreDataManager.shared.addFavourite(recipeId: recipeId, isLocal: recipe?.isLocal ?? false)
+        case .remove:
+            setUnfavoriteState()
+            CoreDataManager.shared.deleteFavourite(recipeId: recipeId)
+        case .cancel:
+            resetSwipeState()
+        default: print("unknown type")
+        }
+        
+        controller.dismiss(animated: true)
     }
 }

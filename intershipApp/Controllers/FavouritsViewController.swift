@@ -26,26 +26,26 @@ class FavouritsViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         self.title = "Favorites"
-               toggleFav = UIBarButtonItem(title: "My Recipes", style: .plain, target: self, action: #selector(toggleFavButtonTapped))
-               self.navigationItem.rightBarButtonItem = toggleFav
-               
+        toggleFav = UIBarButtonItem(title: "My Recipes", style: .plain, target: self, action: #selector(toggleFavButtonTapped))
+        self.navigationItem.rightBarButtonItem = toggleFav
+        
         getFavourits()
         recipesTableVC.dataSource = favourits
         
         
         
-//        
-//        //recipesTableVC.updateData(foundRecipes)
-//        //addChild(recipesTableVC)
-//        //view.addSubview(recipesTableVC.view)
-//        //recipesTableVC.didMove(toParent: self)
-//        recipesTableVC.view.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            recipesTableVC.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-//            recipesTableVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            recipesTableVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            recipesTableVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
+        //
+        //        //recipesTableVC.updateData(foundRecipes)
+        //        //addChild(recipesTableVC)
+        //        //view.addSubview(recipesTableVC.view)
+        //        //recipesTableVC.didMove(toParent: self)
+        //        recipesTableVC.view.translatesAutoresizingMaskIntoConstraints = false
+        //        NSLayoutConstraint.activate([
+        //            recipesTableVC.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        //            recipesTableVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+        //            recipesTableVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        //            recipesTableVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        //        ])
         addChild(recipesTableVC)
         view.addSubview(recipesTableVC.view)
         recipesTableVC.didMove(toParent: self)
@@ -73,14 +73,14 @@ class FavouritsViewController: UIViewController {
         recipesTableVC.dataSource = favourits
         recipesTableVC.tableView.reloadData()
     }
-
+    
     @objc func toggleFavButtonTapped() {
-           isShowingUserRecipes.toggle()
-           updateToggleButtonTitle()
-           getFavourits()
-       }
-
-       func updateToggleButtonTitle() {
-           toggleFav?.title = isShowingUserRecipes ? "All Recipes" : "My Recipes"
-       }
+        isShowingUserRecipes.toggle()
+        updateToggleButtonTitle()
+        getFavourits()
+    }
+    
+    func updateToggleButtonTitle() {
+        toggleFav?.title = isShowingUserRecipes ? "All Recipes" : "My Recipes"
+    }
 }

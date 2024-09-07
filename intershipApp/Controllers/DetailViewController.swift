@@ -32,12 +32,12 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         scrollView.delegate = self
         scrollView.minimumZoomScale = 1.0
-           scrollView.maximumZoomScale = 3.0
+        scrollView.maximumZoomScale = 3.0
         
         if let imageSrc = imageSrc {
             ImageLoader.shared.loadImage(from: imageSrc, into: recipeImage, with: nil)
         }
-
+        
         
         ingredientsLabel.text = measuredIngredients
         instructionsLabel.text = instructions

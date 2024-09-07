@@ -62,12 +62,12 @@ class RegisterViewController: UIViewController {
         print(user)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
-                if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate {
-                    sceneDelegate.window?.rootViewController = tabBarController
-                }
+        if let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+            if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate {
+                sceneDelegate.window?.rootViewController = tabBarController
             }
-       
+        }
+        
     }
     
     

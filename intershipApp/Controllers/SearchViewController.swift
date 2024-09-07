@@ -28,9 +28,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         self.title = "Search"
-               toggleSearch = UIBarButtonItem(title: "My Recipes", style: .plain, target: self, action: #selector(toggleButtonTapped))
-               self.navigationItem.rightBarButtonItem = toggleSearch
-              
+        toggleSearch = UIBarButtonItem(title: "My Recipes", style: .plain, target: self, action: #selector(toggleButtonTapped))
+        self.navigationItem.rightBarButtonItem = toggleSearch
+        
         searchTextField.delegate = self
         
         if let savedRecipes = user.loadRecipesFromUserDefaults() {
@@ -54,10 +54,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     func loadUserRecipes() {
         if let userData = UserData.loadFromDefaults(), let recipes = userData.userRecipes {
-                    userRecipes = recipes
-                } else {
-                    userRecipes = []
-                }
+            userRecipes = recipes
+        } else {
+            userRecipes = []
+        }
     }
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
@@ -93,11 +93,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             tabBarController.toggleSearch?.title = isShowingUserRecipes ? "All Recipes" : "My Recipes"
         }
     }
-
+    
     @objc func toggleButtonTapped() {
-            isShowingUserRecipes.toggle()
-            loadUserRecipes()
-            updateToggleButtonTitle()
-            reload()
-        }
+        isShowingUserRecipes.toggle()
+        loadUserRecipes()
+        updateToggleButtonTitle()
+        reload()
+    }
 }
