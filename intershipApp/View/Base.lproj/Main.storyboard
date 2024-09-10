@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="43Q-0b-Jyh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4415" y="406"/>
+            <point key="canvasLocation" x="4178" y="406"/>
         </scene>
         <!--DetailViewController-->
         <scene sceneID="Fku-gF-Vk6">
@@ -60,7 +60,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="2MA-HH-mqm">
-                                        <rect key="frame" x="0.0" y="20" width="393" height="759"/>
+                                        <rect key="frame" x="0.0" y="20" width="393" height="809"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDI-T7-SRc">
                                                 <rect key="frame" x="10" y="0.0" width="373" height="300"/>
@@ -94,20 +94,40 @@
                                                     <constraint firstItem="zU6-bZ-ETM" firstAttribute="leading" secondItem="tDI-T7-SRc" secondAttribute="leading" id="n5i-d0-6o6"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s98-CF-DZM">
+                                                <rect key="frame" x="15" y="330" width="363" height="20"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aed-de-5Cr">
+                                                        <rect key="frame" x="292" y="0.0" width="51" height="34.333333333333336"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="note.text.badge.plus" catalog="system">
+                                                            <color key="baseForegroundColor" systemColor="systemGray3Color"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <segue destination="umT-AO-AGl" kind="show" identifier="ToNotes" id="6Im-n7-LP7"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="Aed-de-5Cr" secondAttribute="trailing" constant="20" id="5aY-GC-IAT"/>
+                                                    <constraint firstItem="Aed-de-5Cr" firstAttribute="top" secondItem="s98-CF-DZM" secondAttribute="top" id="GAe-37-fMm"/>
+                                                    <constraint firstAttribute="height" constant="20" id="grf-AO-VBg"/>
+                                                </constraints>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Ingredients:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fly-Tw-ZlD">
-                                                <rect key="frame" x="20" y="330" width="353" height="24"/>
+                                                <rect key="frame" x="20" y="380" width="353" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Ingredients:" lineBreakMode="tailTruncation" numberOfLines="1000" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoZ-Jg-NAO">
-                                                <rect key="frame" x="20" y="384" width="353" height="20.333333333333314"/>
+                                                <rect key="frame" x="20" y="434" width="353" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10000" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9D-xe-4ze">
-                                                <rect key="frame" x="20" y="434.33333333333337" width="353" height="324.66666666666663"/>
+                                                <rect key="frame" x="20" y="484.33333333333337" width="353" height="324.66666666666663"/>
                                                 <string key="text">Combine the sake or rice wine, soy sauce, sesame oil and cornflour dissolved in water. Divide mixture in half.\r\nIn a glass dish or bowl, combine half of the sake mixture with the chicken pieces and toss to coat. Cover dish and place in refrigerator for about 30 minutes.\r\nIn a medium frying pan, combine remaining sake mixture, chillies, vinegar and sugar. Mix together and add spring onion, garlic, water chestnuts and peanuts. Heat sauce slowly over medium heat until aromatic.\r\nMeanwhile, remove chicken from marinade and sauté in a large frying pan until juices run clear. When sauce is aromatic, add sautéed chicken and let simmer together until sauce thickens</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -118,11 +138,13 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Fly-Tw-ZlD" secondAttribute="trailing" constant="20" id="9DJ-IK-7bL"/>
                                             <constraint firstAttribute="trailing" secondItem="o9D-xe-4ze" secondAttribute="trailing" constant="20" id="9ZI-bH-jmZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="s98-CF-DZM" secondAttribute="trailing" constant="15" id="Woa-Zv-2Kl"/>
                                             <constraint firstAttribute="trailing" secondItem="JoZ-Jg-NAO" secondAttribute="trailing" constant="20" id="fsh-EB-JZS"/>
                                             <constraint firstItem="o9D-xe-4ze" firstAttribute="leading" secondItem="2MA-HH-mqm" secondAttribute="leading" constant="20" id="ie6-Un-CmM"/>
                                             <constraint firstItem="tDI-T7-SRc" firstAttribute="centerX" secondItem="2MA-HH-mqm" secondAttribute="centerX" id="sql-YR-sOC"/>
                                             <constraint firstItem="tDI-T7-SRc" firstAttribute="leading" secondItem="2MA-HH-mqm" secondAttribute="leading" constant="10" id="wri-LM-c3w"/>
                                             <constraint firstItem="JoZ-Jg-NAO" firstAttribute="leading" secondItem="2MA-HH-mqm" secondAttribute="leading" constant="20" id="y72-4A-lIT"/>
+                                            <constraint firstItem="s98-CF-DZM" firstAttribute="leading" secondItem="2MA-HH-mqm" secondAttribute="leading" constant="15" id="zvf-bu-jGR"/>
                                             <constraint firstItem="Fly-Tw-ZlD" firstAttribute="leading" secondItem="2MA-HH-mqm" secondAttribute="leading" constant="20" id="zyK-Uf-XtK"/>
                                         </constraints>
                                     </stackView>
@@ -264,6 +286,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V2o-ba-1Le" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3259" y="2540"/>
+        </scene>
+        <!--NotesViewController-->
+        <scene sceneID="LUi-QB-VIS">
+            <objects>
+                <viewController title="NotesViewController" id="umT-AO-AGl" customClass="NotesViewController" customModule="intershipApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="apX-5i-Ob2">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6Hs-xZ-dZ2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RL5-U6-sHQ"/>
+                    <connections>
+                        <segue destination="6tC-Xh-g6d" kind="show" identifier="ToAddNote" id="j0s-gV-Mgj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KBw-xC-PHM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2308" y="3249"/>
+        </scene>
+        <!--AddNoteViewController-->
+        <scene sceneID="ADD-qh-VUp">
+            <objects>
+                <viewController storyboardIdentifier="AddNoteViewController" title="AddNoteViewController" id="6tC-Xh-g6d" customClass="AddNoteViewController" customModule="intershipApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S3T-uD-J3g">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePl-b8-0ng">
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Fy-SS-BNY">
+                                        <rect key="frame" x="15" y="10" width="363" height="739"/>
+                                        <color key="backgroundColor" name="darkBC"/>
+                                        <color key="textColor" name="myWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" name="darkBC"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="4Fy-SS-BNY" secondAttribute="bottom" id="CyF-qF-3My"/>
+                                    <constraint firstItem="4Fy-SS-BNY" firstAttribute="leading" secondItem="ePl-b8-0ng" secondAttribute="leading" constant="15" id="SR9-zB-sgX"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Fy-SS-BNY" secondAttribute="trailing" constant="15" id="fdv-S0-IeF"/>
+                                    <constraint firstItem="4Fy-SS-BNY" firstAttribute="top" secondItem="ePl-b8-0ng" secondAttribute="top" constant="10" id="zeb-VU-luU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qEG-Sa-zSJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ePl-b8-0ng" firstAttribute="top" secondItem="qEG-Sa-zSJ" secondAttribute="top" id="Kix-Wz-yDX"/>
+                            <constraint firstAttribute="bottom" secondItem="ePl-b8-0ng" secondAttribute="bottom" id="cFG-ed-bp0"/>
+                            <constraint firstItem="ePl-b8-0ng" firstAttribute="leading" secondItem="S3T-uD-J3g" secondAttribute="leading" id="y1X-7T-8fJ"/>
+                            <constraint firstAttribute="trailing" secondItem="ePl-b8-0ng" secondAttribute="trailing" id="zgh-rS-1tJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="jxH-VH-Bpl"/>
+                    <connections>
+                        <outlet property="noteTextView" destination="4Fy-SS-BNY" id="m1m-AC-CX0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gW6-WC-kNr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3258.7786259541986" y="3248.5915492957747"/>
         </scene>
         <!--TabBarController-->
         <scene sceneID="zxd-oz-AP8">
@@ -486,6 +573,7 @@
         <image name="exclamationmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass.circle" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="note.text.badge.plus" catalog="system" width="128" height="109"/>
         <image name="plus.square.fill.on.square.fill" catalog="system" width="128" height="120"/>
         <image name="text.book.closed.fill" catalog="system" width="115" height="128"/>
         <namedColor name="black">
@@ -506,8 +594,11 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -27,6 +27,8 @@ class DetailViewController: UIViewController {
     var mealName: String?
     var measuredIngredients: String?
     var instructions: String?
+    var idRecipe: String?
+    var k = K()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +67,13 @@ class DetailViewController: UIViewController {
         let activityController = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
         present(activityController, animated: true, completion: nil)
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == k.segueToNotes {
+                if let notesVC = segue.destination as? NotesViewController {
+                    notesVC.idRecipe = self.idRecipe
+                }
+            }
+        }
 }
 
 extension DetailViewController: UIScrollViewDelegate {

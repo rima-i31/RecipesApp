@@ -54,7 +54,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    lazy var notesPersistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "NotesModel")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
 
+    func saveNotesContext() {
+        let context = notesPersistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
 
 
 }

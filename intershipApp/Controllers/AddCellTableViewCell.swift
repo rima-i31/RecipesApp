@@ -37,7 +37,12 @@ class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UI
         nameTextField.delegate = self
         ingredientsTextView.delegate = self
         instructionsTextView.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+                self.contentView.addGestureRecognizer(tapGesture)
     }
+    @objc func dismissKeyboard() {
+            self.endEditing(true)
+        }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -147,20 +152,5 @@ class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UI
         
         return imageURL.path
     }
-    // MARK: - UITextFieldDelegate
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    // MARK: - UITextViewDelegate
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
+  
 }

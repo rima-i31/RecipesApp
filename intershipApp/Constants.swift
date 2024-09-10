@@ -18,4 +18,6 @@ struct K{
     let segueToHome = "showHomeScreen"
     let segueToAddMenu = "toAddView"
     let addRecipeCell = "AddRecipeCell"
+    let segueToAddNote = "ToAddNote"
+    let segueToNotes = "ToNotes"
 }

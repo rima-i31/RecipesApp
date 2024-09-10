@@ -13,5 +13,6 @@ struct ToDetailsSegueManager{
         destinationVC.mealName = selectedCell.mealName
         destinationVC.measuredIngredients = selectedCell.measuredIngredients
         destinationVC.instructions = selectedCell.instructions
+        destinationVC.idRecipe = selectedCell.id
     }
 }

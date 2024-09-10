@@ -113,7 +113,6 @@ class HomeScreenCellController: UITableViewCell {
             customAlert.loadViewIfNeeded()
             configureAlert(customAlert, for: actionType)
             customAlert.modalPresentationStyle = .overCurrentContext
-            customAlert.modalTransitionStyle = .crossDissolve
             viewController.present(customAlert, animated: true)
         }
         
@@ -195,6 +194,12 @@ extension HomeScreenCellController: CustomAlertDelegate {
         default: print("unknown type")
         }
         
-        controller.dismiss(animated: true)
+        
+        UIView.animate(withDuration: 0.5) {
+            controller.view.backgroundColor = .clear
+        } completion: { finish in
+            controller.dismiss(animated: true)
+        }
+
     }
 }
