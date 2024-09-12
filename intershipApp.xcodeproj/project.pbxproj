@@ -22,6 +22,7 @@
 		54542DDF2C8F432F001E109C /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54542DDE2C8F432F001E109C /* AddNoteViewController.swift */; };
 		546AC2422C7CA62A00AF71FD /* FavouriteRecipeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 546AC2402C7CA62A00AF71FD /* FavouriteRecipeModel.xcdatamodeld */; };
 		546AC2452C7CA74700AF71FD /* FavouriteRecipe+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546AC2432C7CA74700AF71FD /* FavouriteRecipe+CoreDataClass.swift */; };
+		5470729A2C918E830027586B /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 547072992C918E830027586B /* iCarousel.m */; };
 		5478A5DA2C7F9876003F818A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5478A5D92C7F9876003F818A /* SearchViewController.swift */; };
 		5478A5DC2C7F988B003F818A /* FavouritsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5478A5DB2C7F988B003F818A /* FavouritsViewController.swift */; };
 		5478A5DE2C7F989D003F818A /* MyRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5478A5DD2C7F989D003F818A /* MyRecipesViewController.swift */; };
@@ -76,6 +77,9 @@
 		54542DDE2C8F432F001E109C /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
 		546AC2412C7CA62A00AF71FD /* FavouriteRecipeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavouriteRecipeModel.xcdatamodel; sourceTree = "<group>"; };
 		546AC2432C7CA74700AF71FD /* FavouriteRecipe+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteRecipe+CoreDataClass.swift"; sourceTree = "<group>"; };
+		547072972C918E820027586B /* intershipApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "intershipApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		547072982C918E830027586B /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		547072992C918E830027586B /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		5478A5D92C7F9876003F818A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5478A5DB2C7F988B003F818A /* FavouritsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritsViewController.swift; sourceTree = "<group>"; };
 		5478A5DD2C7F989D003F818A /* MyRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipesViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 		5411A9732C5E1E4900AB3695 /* intershipApp */ = {
 			isa = PBXGroup;
 			children = (
+				547072982C918E830027586B /* iCarousel.h */,
+				547072992C918E830027586B /* iCarousel.m */,
 				548E9A632C65F96200B414D3 /* Model */,
 				548E9A642C65F99200B414D3 /* View */,
 				548E9A652C66563200B414D3 /* Controllers */,
@@ -150,6 +156,7 @@
 				5411A9762C5E1E4900AB3695 /* SceneDelegate.swift */,
 				5411A9822C5E1E4B00AB3695 /* Info.plist */,
 				548E9A662C665ACF00B414D3 /* Constants.swift */,
+				547072972C918E820027586B /* intershipApp-Bridging-Header.h */,
 			);
 			path = intershipApp;
 			sourceTree = "<group>";
@@ -276,6 +283,7 @@
 				TargetAttributes = {
 					5411A9702C5E1E4900AB3695 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 				};
 			};
@@ -335,6 +343,7 @@
 				54173F962C7352CC001038E3 /* AddRecipeViewController.swift in Sources */,
 				54849AF62C8EFF3000CE9354 /* NotesTableViewController.swift in Sources */,
 				5411A9772C5E1E4900AB3695 /* SceneDelegate.swift in Sources */,
+				5470729A2C918E830027586B /* iCarousel.m in Sources */,
 				54FBE0022C63886800C0C76C /* UserData.swift in Sources */,
 				54FBDFF02C6387B100C0C76C /* ViewController.swift in Sources */,
 				54173F9A2C73874B001038E3 /* AddCellTableViewCell.swift in Sources */,
@@ -510,6 +519,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HR3PYTY4C3;
@@ -528,6 +538,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.intershipApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "intershipApp/intershipApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -538,6 +550,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HR3PYTY4C3;
@@ -556,6 +569,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.intershipApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "intershipApp/intershipApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

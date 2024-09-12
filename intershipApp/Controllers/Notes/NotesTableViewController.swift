@@ -21,23 +21,23 @@ class NotesTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "NoNotesCell", bundle: nil), forCellReuseIdentifier: "NoNotesCell")
         tableView.register(UINib(nibName: "NotesTableViewCell", bundle: nil), forCellReuseIdentifier: "NotesTableViewCell")
         tableView.rowHeight = UITableView.automaticDimension
-                tableView.estimatedRowHeight = 70.0
+        tableView.estimatedRowHeight = 70.0
         updateSeparatorStyle()
         
     }
-  
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: .favouritesUpdated, object: nil)
     }
     private func updateSeparatorStyle() {
-            if dataSource.isEmpty {
-                tableView.separatorStyle = .none
-            } else {
-                tableView.separatorStyle = .singleLine
-            }
+        if dataSource.isEmpty {
+            tableView.separatorStyle = .none
+        } else {
+            tableView.separatorStyle = .singleLine
         }
+    }
     @objc func notesDidUpdate(){
-       updateSeparatorStyle()
+        updateSeparatorStyle()
     }
     
     // MARK: - Table view data source
@@ -81,18 +81,18 @@ class NotesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-          let noteToDelete = dataSource[indexPath.row]
-          
-          let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in
-              guard let self = self else { return }
-              
-              CoreDataManager.shared.deleteNoteById(noteId: noteToDelete.objectID)
-              self.updateSeparatorStyle()
-              completionHandler(true)
-          }
-          
-          let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-          configuration.performsFirstActionWithFullSwipe = true
-          return configuration
-      }
+        let noteToDelete = dataSource[indexPath.row]
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in
+            guard let self = self else { return }
+            
+            CoreDataManager.shared.deleteNoteById(noteId: noteToDelete.objectID)
+            self.updateSeparatorStyle()
+            completionHandler(true)
+        }
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = true
+        return configuration
+    }
 }

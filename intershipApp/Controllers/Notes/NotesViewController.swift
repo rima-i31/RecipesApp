@@ -37,8 +37,8 @@ class NotesViewController: UIViewController {
     }
     @objc func notesDidUpdate(){
         if let recipeId = idRecipe {
-                    notes = CoreDataManager.shared.fetchNotesForRecipe(idRecipe: recipeId)
-                }
+            notes = CoreDataManager.shared.fetchNotesForRecipe(idRecipe: recipeId)
+        }
         notesTableVC.dataSource = notes
         notesTableVC.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
     }

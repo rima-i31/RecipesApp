@@ -38,11 +38,11 @@ class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UI
         ingredientsTextView.delegate = self
         instructionsTextView.delegate = self
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-                self.contentView.addGestureRecognizer(tapGesture)
+        self.contentView.addGestureRecognizer(tapGesture)
     }
     @objc func dismissKeyboard() {
-            self.endEditing(true)
-        }
+        self.endEditing(true)
+    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -152,5 +152,5 @@ class AddCellTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UI
         
         return imageURL.path
     }
-  
+    
 }

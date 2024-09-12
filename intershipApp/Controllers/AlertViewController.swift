@@ -28,16 +28,16 @@ class AlertViewController: UIViewController {
     @IBOutlet weak var yesButton: UIButton!
     
     weak var delegate: CustomAlertDelegate?
-        var actionType: AlertActionType?
-        var recipeId: String?
+    var actionType: AlertActionType?
+    var recipeId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
         if let alertView = self.view.subviews.first {
-                alertView.layer.cornerRadius = 10
-                alertView.layer.masksToBounds = true
-            }
+            alertView.layer.cornerRadius = 10
+            alertView.layer.masksToBounds = true
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -46,7 +46,7 @@ class AlertViewController: UIViewController {
         }
     }
     
-
+    
     @IBAction func noButtonTapped(_ sender: UIButton) {
         guard let recipeId = recipeId else { return }
         delegate?.alertAction(self, didPressButton: .cancel, forRecipeId: recipeId)
