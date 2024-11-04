@@ -90,7 +90,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
     func updateToggleButtonTitle() {
         if let tabBarController = self.tabBarController as? TabBarController {
-            tabBarController.toggleSearch?.title = isShowingUserRecipes ? "All Recipes" : "My Recipes"
+            navigationItem.rightBarButtonItem?.title = isShowingUserRecipes ? "All Recipes" : "My Recipes"
         }
     }
     

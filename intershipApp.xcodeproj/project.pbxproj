@@ -197,6 +197,7 @@
 		548E9A632C65F96200B414D3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				54D92AD42C934DE700CAA97F /* carousel+ */,
 				546AC23B2C7CA3EF00AF71FD /* CoreData */,
 				54FBDFFC2C63886800C0C76C /* RecipeModel.swift */,
 				54AE1D002C80AAE5003B2A23 /* notifications.swift */,
@@ -249,6 +250,13 @@
 				547E32822C8CBEC300E0BA36 /* AlertViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		54D92AD42C934DE700CAA97F /* carousel+ */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "carousel+";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

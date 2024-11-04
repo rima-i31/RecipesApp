@@ -50,12 +50,10 @@ class AlertViewController: UIViewController {
     @IBAction func noButtonTapped(_ sender: UIButton) {
         guard let recipeId = recipeId else { return }
         delegate?.alertAction(self, didPressButton: .cancel, forRecipeId: recipeId)
-        //dismiss(animated: true, completion: nil)
     }
     
     @IBAction func yesButtonTapped(_ sender: UIButton) {
         guard let actionType = actionType, let recipeId = recipeId else { return }
         delegate?.alertAction(self, didPressButton: actionType, forRecipeId: recipeId)
-        //dismiss(animated: true, completion: nil)
     }
 }

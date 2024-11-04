@@ -29,8 +29,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
                    let tabBarController = storyboard.instantiateInitialViewController() as? UITabBarController
                    self.window?.rootViewController = tabBarController
-//                   let navigationController = UINavigationController(rootViewController: tabBarController!)
-//                               self.window?.rootViewController = navigationController
                } else {
                    print("no userID")
                    // Если id нет, переходим на сториборд регистрации
